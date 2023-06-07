@@ -1,4 +1,4 @@
-# Practice-Group-Repo
+# Playlist-Creator
 
 ## Rules
 - Main branch is protected
