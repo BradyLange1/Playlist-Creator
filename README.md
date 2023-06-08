@@ -34,6 +34,7 @@ playlist creation and generation, search based on genre, artist, song, etc
 - add soundcloud widget for playing songs
 - pinning/favoriting feature for songs/playlists
 - accordion out rest of songs in playlist cards
+- add parental guidance feature
 - additional APIs for more song options
 - find lyrics for songs
 
