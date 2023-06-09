@@ -1,3 +1,4 @@
+
 var userInputEl = $('#song-title')
 var searchButtonEl = $('#search-button')
 
@@ -30,3 +31,14 @@ searchButtonEl.on('click', function(){
     console.log(userInput)
     getInfo(userInput)
 })
+
+// fetch data based on search input
+// populate data on page
+
+// .playlist-card
+// .playlist-img
+// .playlist-title
+
+// .result-card
+// .result-img
+// .result-title
