@@ -28,35 +28,34 @@ function printDataToPage(data){
     if (data.length === 0) {
       resultsContainer.textContent = 'No search results found.';
       return;
-    }
-      
-    for (var i = 0; i < data.length; i++) {
-      var artistName = data[i].artist.name;
-      var albumTitle = data[i].album.title;
-      var songTitle = data[i].title;
-      
-    // var repoEl = document.createElement('div');
-    // repoEl.classList = 'list-item flex-row justify-space-between align-center';
-      
-    // var titleEl = document.createElement('span');
-    // titleEl.textContent = repoName;
-      
-    // repoEl.appendChild(titleEl);
-      
-    // var statusEl = document.createElement('span');
-    // statusEl.classList = 'flex-row align-center';
-      
-    // if (repos[i].open_issues_count > 0) {
-    // statusEl.innerHTML =
-    // "<i class='fas fa-times status-icon icon-danger'></i>" + repos[i].open_issues_count + ' issue(s)';
-    // } else {
-    // statusEl.innerHTML = "<i class='fas fa-check-square status-icon icon-success'></i>";
-    // }
-      
-    // repoEl.appendChild(statusEl);
-      
-    // repoContainerEl.appendChild(repoEl);
-    }
+    } else {
+        for (var i = 0; i < data.length; i++) {
+            var artistName = data[i].artist.name;
+          //var albumTitle = data[i].album.title;
+            var songTitle = data[i].title;
+            var albumCover = data[i].album.cover_medium;
+            
+            var resultCard = document.createElement('div');resultCard.classList = '';
+            
+            var resultImg = document.createElement('img');resultImg.classList = '';
+            resultImg.src = albumCover;
+            
+            var resultTitle = document.createElement('h3');resultTitle.classList = '';
+            resultTitle.textContent = songTitle;
+            
+            var resultArtist = document.createElement('p');resultArtist.classList = '';
+            resultArtist.textContent = artistName;
+            
+            var addBtn = document.createElement('button');
+            addBtn.classList = '';
+            
+            resultsContainer.appendChild(resultCard);
+            resultCard.appendChild(resultImg);
+            resultCard.appendChild(resultTitle);
+            resultCard.appendChild(resultArtist);
+            resultCard.appendChild(addBtn);
+          }
+    } 
 };
 
 function addPlaylist(input){
