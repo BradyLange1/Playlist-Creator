@@ -1,36 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/beercss@3.2.9/dist/cdn/beer.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/beercss@3.2.9/dist/cdn/beer.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>PLaylist Creator</title>
 </head>
 
 <body>
     <header>
-        <h1>Playlist Creator</h1>
-        <p>for your playlist creation needs</p>
+        <div>
+            <div class="header-parents">
+                <img class="logo header-child header-bar" src="./assets/Images/logo.svg">
+                <!-- search section, just an example for how it would look if only searching for things based on song title, other search parameters can be added later -->
+                <form action="" class="search-bar header-bar">
+                    <button type="submit">
+                        <img src="./assets/Images/Search-icon.svg" alt="Search">
+                    </button>
+                    <input class="search-box header-child" id="search-box" type="text"
+                        placeholder="Search your favorite Genres, Songs, or Artists" autofocus="true" />
+
+                <form>
+            </div>
+        </div>
     </header>
 
     <main>
-        <!-- search section, just an example for how it would look if only searching for things based on song title, other search parameters can be added later -->
-        <section>
+        <aside>
+            <section class="aside-bar">
+            </section>
+        </aside>
+        <aside>
+            <section></section>
+        </aside>
+        
+        <!-- <section>
             <h3>Search by Song Title</h3>
             <form id="search-form">
               <label for="song-title">Song Title</label>
-              <input title="song-title" id="song-title" type="text" autofocus="true"/>
+              
               <button type="submit">Search</button>
-            </form>
+            </form> -->
 
-            <!-- search results, added programatically -->
-            <div id="results-container"></div>
+        <!-- search results, added programatically -->
+        <div id="results-container"></div>
         </section>
 
         <!-- playlist section, new cards added programatically -->
-        <section>
+        <!-- <section>
             <button>New Playlist</button>
 
             <div class="playlist-card">
@@ -39,10 +59,11 @@
                     <p>Playlist Title</p>
                     <button>Add to playlist</button>
                 </div>
-            </div>
+            </div> -->
         </section>
     </main>
 
     <script src="assets/js/script.js"></script>
 </body>
+
 </html>
