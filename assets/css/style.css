@@ -2,7 +2,7 @@
     --background: #090011;
     --active-text: #f1f1f1;
     --deactive-text:#151515;
-    --sectionBack:#151515;
+    --sectionBack:#130e17;
     --search-box:hsl(0, 0%, 20%, 0.5);
 
 }
@@ -24,7 +24,7 @@ html{
 }
 
 #search-box{
-    margin: 50px;
+    /* margin: 50px; */
     color: var(--active-text);
     /* display: inline-block; */
     justify-content: flex-end;
@@ -51,10 +51,12 @@ html{
     flex-wrap:wrap;
     float: right;
     display: flex;
+    align-items: center;
 }
 
 .search-bar input{
     background: transparent;
+    float: left;
     flex: 1;
     border: 0;
     outline: none;
@@ -63,13 +65,22 @@ html{
 
 .search-bar button img{
     width: 35px;
-
+    
 }
 .search-bar button {
+    float: left;
     border: 0;
     border-radius: 50%;
     width: 50px;
     height: 50px;
     background: var(--search-box);
     cursor: pointer;
+}
+
+aside .aside-bar{
+    display:flex ;
+    background-color: var(--sectionBack);
+    width: 500px;
+    height: 400px;
+
 }
