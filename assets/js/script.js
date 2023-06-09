@@ -1,4 +1,4 @@
-var userInputEl = $('#user-search')
+var userInputEl = $('#search-box')
 var searchButtonEl = $('#search-button')
 var resultsContainer = $('#results-container')
 
@@ -60,7 +60,6 @@ function printDataToPage(data){
 
 searchButtonEl.on('click', function(){
     var userInput = userInputEl.val()
-    console.log(userInput)
     getInfo(userInput)
 })
 
