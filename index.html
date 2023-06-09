@@ -19,11 +19,11 @@
         <!-- search section, just an example for how it would look if only searching for things based on song title, other search parameters can be added later -->
         <section>
             <h3>Search by Song Title</h3>
-            <form id="search-form">
+            <div id="search-form">
               <label for="song-title">Song Title</label>
               <input title="song-title" id="song-title" type="text" autofocus="true"/>
-              <button type="submit">Search</button>
-            </form>
+              <button type="submit" id="search-button">Search</button>
+            </div>
 
             <!-- search results, added programatically -->
             <div id="results-container"></div>
@@ -43,6 +43,7 @@
         </section>
     </main>
 
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
