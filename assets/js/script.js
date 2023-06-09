@@ -1,6 +1,8 @@
 var userInputEl = $('#search-box')
 var searchButtonEl = $('#search-button')
 var resultsContainer = $('#results-container')
+var addPlaylistButtonEl = $('#add-playlist-button')
+var userInputPlaylistEl = $('#user-input-playlist')
 
 const options = {
 	method: 'GET',
@@ -57,15 +59,18 @@ function printDataToPage(data){
     }
 };
 
-function addPlaylist(){
-
+function addPlaylist(input){
+    $("#playlist-form").append("<button class = user-playlist>" + input)
 }
-
-
 
 searchButtonEl.on('click', function(){
     var userInput = userInputEl.val()
     getInfo(userInput)
+})
+
+addPlaylistButtonEl.on('click', function(){
+    var userInput = userInputPlaylistEl.val()
+    addPlaylist(userInput)
 })
 
 // fetch data based on search input
