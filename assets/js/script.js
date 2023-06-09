@@ -55,7 +55,12 @@ function printDataToPage(data){
       
     // repoContainerEl.appendChild(repoEl);
     }
-    };
+};
+
+function addPlaylist(){
+
+}
+
 
 
 searchButtonEl.on('click', function(){
