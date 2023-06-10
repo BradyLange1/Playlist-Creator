@@ -1,8 +1,8 @@
-var userInputEl = $('#search-box')
-var searchButtonEl = $('#search-button')
-var resultsContainer = $('#results-container')
-var addPlaylistButtonEl = $('#add-playlist-button')
-var userInputPlaylistEl = $('#user-input-playlist')
+var userInputEl = $('#search-box');
+var searchButtonEl = $('#search-button');
+var resultsEl = document.querySelector('#results');
+var addPlaylistButtonEl = $('#add-playlist-button');
+var userInputPlaylistEl = $('#user-input-playlist');
 
 const options = {
 	method: 'GET',
@@ -24,41 +24,61 @@ function getInfo(input){
         })
 }
 
-function printDataToPage(data){
-    console.log("second log", data)
-    console.log("second log", data.data.length)
-    if (data.data.length === 0) {
+function printDataToPage(results){
+    // console.log("second log", data)
+    // console.log("second log", results.data.length)
+    if (results.data.length === 0) {
       resultsContainer.textContent = 'No search results found.';
       return;
     } else {
-        for (var i = 0; i < data.data.length; i++) {
-            console.log("third log", data);
-            console.log("fourth log", data.data[0]);
+        for (var i = 0; i < results.data.length; i++) {
+            // console.log("third log", results);
+            // console.log("fourth log", results.data[i]);
 
+            var resultsContainer = document.createElement('div');
+            var resultCard = document.createElement('div');
+            var resultImg = document.createElement('img');
+            var resultTitle = document.createElement('h3');
             var resultArtist = document.createElement('p');
-            resultArtist.textContent = data.data[i].artist.name;
-            resultsContainer.append(resultArtist)
-            console.log("these are the artists", resultArtist)
-        //     var albumTitle = data[i].album.title;
-        //     var songTitle = data[i].title;
-        //     var albumCover = data[i].album.cover_medium;
+            var addBtn = document.createElement('button');
+
+            resultsEl.append(resultsContainer);
+            resultsContainer.append(resultCard);
+
+            var albumCover = results.data[i].album.cover_medium;
+            resultImg.setAttribute('src', albumCover);
+            resultCard.append(resultImg)
+
+            var songTitle = results.data[i].title;
+            resultTitle.textContent = songTitle;
+            resultCard.append(resultTitle);
+
+            var artistName = results.data[i].artist.name;
+            resultArtist.textContent = artistName;
+            resultCard.append(resultArtist);
+
+            resultCard.append(addBtn);
+
+            // console.log("this is the cover", resultImg);
+            // console.log("this is the song", resultTitle);
+            // console.log("this is the artist", resultArtist);
+
+            // var albumTitle = results.data[i].album.title;
 
             // console.log(artistName)
             
-            // var resultCard = document.createElement('div');resultCard.classList.add('');
+            //resultCard.classList.add('');
             
-            // var resultImg = document.createElement('img');resultImg.classList = '';
+
+            //resultImg.classList = '';
             // resultImg.src = albumCover;
             
-            // var resultTitle = document.createElement('h3');resultTitle.classList = '';
-            // resultTitle.textContent = songTitle;
-            
+            //resultTitle.classList = '';
            
             // resultArtist.classList = '';
             // resultArtist.textContent = artistName;
             
-            var addBtn = document.createElement('button');
-            addBtn.classList = '';
+            // addBtn.classList = '';
             
             // resultsContainer.appendChild(resultCard);
             // resultCard.appendChild(resultImg);
