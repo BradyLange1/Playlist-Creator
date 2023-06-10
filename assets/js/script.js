@@ -40,16 +40,20 @@ function printDataToPage(results){
 
             var albumCover = results.data[i].album.cover_medium;
             resultImg.setAttribute('src', albumCover);
+            resultImg.classList.add('');
             resultCard.append(resultImg)
 
             var songTitle = results.data[i].title;
             resultTitle.textContent = songTitle;
+            resultTitle.classList.add('');
             resultCard.append(resultTitle);
 
             var artistName = results.data[i].artist.name;
             resultArtist.textContent = artistName;
+            resultArtist.classList.add('');
             resultCard.append(resultArtist);
 
+            addBtn.classList.add('');
             resultCard.append(addBtn);
 
             // console.log("this is the cover", resultImg);
@@ -57,6 +61,8 @@ function printDataToPage(results){
             // console.log("this is the artist", resultArtist);
 
             resultsContainer.append(resultCard);
+            resultCard.classList.add('');
+
             resultsEl.append(resultsContainer);
           }
     } 
