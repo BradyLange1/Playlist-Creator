@@ -1,8 +1,8 @@
-var userInputEl = $('#search-box')
-var searchButtonEl = $('#search-button')
-var resultsContainer = $('#results-container')
-var addPlaylistButtonEl = $('#add-playlist-button')
-var userInputPlaylistEl = $('#user-input-playlist')
+var userInputEl = $('#search-box');
+var searchButtonEl = $('#search-button');
+var resultsEl = document.querySelector('#results');
+var addPlaylistButtonEl = $('#add-playlist-button');
+var userInputPlaylistEl = $('#user-input-playlist');
 
 const options = {
 	method: 'GET',
@@ -24,47 +24,46 @@ function getInfo(input){
         })
 }
 
-function printDataToPage(data){
-    console.log("second log", data)
-    console.log("second log", data.data.length)
-    if (data.data.length === 0) {
+function printDataToPage(results){
+    if (results.data.length === 0) {
       resultsContainer.textContent = 'No search results found.';
       return;
     } else {
-        for (var i = 0; i < data.data.length; i++) {
-            console.log("third log", data);
-            console.log("fourth log", data.data[0]);
+        for (var i = 0; i < results.data.length; i++) {
 
+            var resultsContainer = document.createElement('div');
+            var resultCard = document.createElement('div');
+            var resultImg = document.createElement('img');
+            var resultTitle = document.createElement('h3');
             var resultArtist = document.createElement('p');
-            resultArtist.textContent = data.data[i].artist.name;
-            resultsContainer.append(resultArtist)
-            console.log("these are the artists", resultArtist)
-        //     var albumTitle = data[i].album.title;
-        //     var songTitle = data[i].title;
-        //     var albumCover = data[i].album.cover_medium;
-
-            // console.log(artistName)
-            
-            // var resultCard = document.createElement('div');resultCard.classList.add('');
-            
-            // var resultImg = document.createElement('img');resultImg.classList = '';
-            // resultImg.src = albumCover;
-            
-            // var resultTitle = document.createElement('h3');resultTitle.classList = '';
-            // resultTitle.textContent = songTitle;
-            
-           
-            // resultArtist.classList = '';
-            // resultArtist.textContent = artistName;
-            
             var addBtn = document.createElement('button');
-            addBtn.classList = '';
-            
-            // resultsContainer.appendChild(resultCard);
-            // resultCard.appendChild(resultImg);
-            // resultCard.appendChild(resultTitle);
-            // resultsContainer.append(resultArtist);
-            // resultCard.appendChild(addBtn);
+
+            var albumCover = results.data[i].album.cover_medium;
+            resultImg.setAttribute('src', albumCover);
+            //resultImg.classList.add('');
+            resultCard.append(resultImg)
+
+            var songTitle = results.data[i].title;
+            resultTitle.textContent = songTitle;
+            //resultTitle.classList.add('');
+            resultCard.append(resultTitle);
+
+            var artistName = results.data[i].artist.name;
+            resultArtist.textContent = artistName;
+            //resultArtist.classList.add('');
+            resultCard.append(resultArtist);
+
+            //addBtn.classList.add('');
+            resultCard.append(addBtn);
+
+            resultsContainer.append(resultCard);
+            //resultCard.classList.add('');
+
+            resultsEl.append(resultsContainer);
+
+            // console.log("this is the cover", resultImg);
+            // console.log("this is the song", resultTitle);
+            // console.log("this is the artist", resultArtist);
           }
     } 
 };
@@ -83,6 +82,7 @@ addPlaylistButtonEl.on('click', function(){
     addPlaylist(userInput)
 })
 
+<<<<<<< HEAD
 
 
 // Get the input field
@@ -108,12 +108,9 @@ searchButtonEl.on('click', function(){
 
 // fetch data based on search input
 // populate data on page
+=======
+>>>>>>> 384dc49be13495a5f4d37d8e781334d76890019c
 
 // .playlist-card
 // .playlist-img
 // .playlist-title
-
-// .result-card
-// .result-img
-// .result-title
-// .add-to-playlist
