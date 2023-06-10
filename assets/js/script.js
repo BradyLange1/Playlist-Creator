@@ -82,6 +82,34 @@ addPlaylistButtonEl.on('click', function(){
     addPlaylist(userInput)
 })
 
+<<<<<<< HEAD
+
+
+// Get the input field
+
+
+// Execute a function when the user presses a key on the keyboard
+userInputEl.on("keypress", function(event) {
+    
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    console.log("Enter for search!", event)
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    searchButtonEl.click();
+  }
+});
+searchButtonEl.on('click', function(){
+    var userInput = userInputEl.val()
+    getInfo(userInput)
+})
+
+
+// fetch data based on search input
+// populate data on page
+=======
+>>>>>>> 384dc49be13495a5f4d37d8e781334d76890019c
 
 // .playlist-card
 // .playlist-img
