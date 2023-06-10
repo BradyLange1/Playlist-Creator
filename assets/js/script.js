@@ -59,9 +59,9 @@ function printDataToPage(results){
 
             resultCard.append(addBtn);
 
-            // console.log("this is the cover", resultImg);
-            // console.log("this is the song", resultTitle);
-            // console.log("this is the artist", resultArtist);
+            console.log("this is the cover", resultImg);
+            console.log("this is the song", resultTitle);
+            console.log("this is the artist", resultArtist);
 
             // var albumTitle = results.data[i].album.title;
 
