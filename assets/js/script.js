@@ -72,6 +72,7 @@ addPlaylistButtonEl.on('click', function(){
     addPlaylist(userInput)
 })
 
+
 // fetch data based on search input
 // populate data on page
 
