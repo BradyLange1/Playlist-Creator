@@ -83,6 +83,29 @@ addPlaylistButtonEl.on('click', function(){
     addPlaylist(userInput)
 })
 
+
+
+// Get the input field
+
+
+// Execute a function when the user presses a key on the keyboard
+userInputEl.on("keypress", function(event) {
+    
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    console.log("Enter for search!", event)
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    searchButtonEl.click();
+  }
+});
+searchButtonEl.on('click', function(){
+    var userInput = userInputEl.val()
+    getInfo(userInput)
+})
+
+
 // fetch data based on search input
 // populate data on page
 
