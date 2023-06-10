@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/beercss@3.2.9/dist/cdn/beer.min.css" rel="stylesheet"> -->
+    <!--Import materialize.css-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Playlist Creator</title>
 </head>
@@ -14,11 +17,13 @@
     <header>
         <div>
             <div class="header-parents">
-                <img class="logo header-child header-bar" src="./assets/Images/logo.svg">
+ 
+                <div class="logo-container"><img class="logo header-child header-bar" src="./assets/Images/logo.svg"></div>
                 <!-- search section, just an example for how it would look if only searching for things based on song title, other search parameters can be added later -->
-                <div action="" class="search-bar header-bar">
+                <div class="search-bar header-bar">
                     <button type="submit" id="search-button">
-                        <img src="./assets/Images/Search-icon.svg" alt="Search">
+                        <!-- <img src="./assets/Images/Search-icon.svg" alt="Search"> -->
+                        <i class="material-icons white-text">search</i>
                     </button>
                     <input class="search-box header-child" id="search-box" type="text" placeholder="Search your favorite Genres, Songs, or Artists" autofocus="true" />
                 <div>
@@ -26,67 +31,78 @@
         </div>
     </header>
 
-    <main>
-        <aside>
-            <section class="aside-bar" id="side-bar">
+    <main>        
+        <aside class="aside-bar" id="side-bar">
+            <div class="home-page">
                 <button type="home-page">
-                    <img src="./assets/Images/home-icon.svg" alt="Home"><br>
-                </button>
-                <button type="playlist">
-                    <img src="./assets/" alt="">
-                </button>
-            </section>
+                <img src="./assets/Images/home-icon.svg" alt="Home" class="icon home-icon">
+                </button><p>Home</p>
+            </div>
+            <div>
+                <button type="playlist" class="creat-palaylist">
+                    <img src="./assets/Images/playlist-icon.svg" alt="" class="icon">
+                </button><p>Creat playlist</p>
+                </div><br>
+            <div>
+                <!-- playlist section, new cards added programatically -->
+                <p>Playlist</p>
+                <hr>
+                <div>
+                    <button>
+                        <img src=""  class="album-icon">
+                        <p></p>
+                    </button>
+                </div>
+                <div>
+                    <button>
+                        <img src=""  class="album-icon">
+                        <p></p>
+                    </button>
+                </div>
+            </div>
         </aside>
-        <aside>
-            <section>
+        <!-- search results, added programatically -->
+        <aside class="results-container" id="search-container">
+            <section class="cards">
+                <img src="" alt="">
+                <p></p><!--Title-->
+                <p></p><!--Title-->
+            </section>
 
+            <section class="cards">
+                <img src="" alt="">
+                <p></p><!--Title-->
+                <p></p><!--Title-->
+            </section>
+
+            <section class="cards">
+                <img src="" alt="">
+                <p></p><!--Title-->
+                <p></p><!--Title-->
+            </section>
+
+            <section class="cards">
+                <img src="" alt="">
+                <p></p><!--Title-->
+                <p></p><!--Title-->
             </section>
         </aside>
         
-        <!-- <section>
-            <h3>Search by Song Title</h3>
-            <form id="search-form">
-              <label for="song-title">Song Title</label>
-              
-              <button type="submit">Search</button>
-            </form> -->
 
-        <!-- search results, added programatically -->
-        <div class="results-container" id="search-container"></div>
-        </section>
+        
+        <div ></div>
+        
 
         <!-- playlist section, new cards added programatically -->
-        <!-- <section> -->
-        <!-- search section, just an example for how it would look if only searching for things based on song title, other search parameters can be added later -->
-        <section>
-            <h3>Search for Music</h3>
-            <div id="search-form">
-              <label for="user-search"></label>
-              <input title="user-search" id="user-search" type="text" autofocus="true"/>
-              <button type="submit" id="search-button">Search</button>
-            </div>
+        <div class="playlist-card">
+            <img src="" alt="">       
             
-            <!-- playlist section, new cards added programatically -->
-            <section>
-            <button>New Playlist</button>
+            
 
-            <div class="playlist-card">
-                <img src="" alt="">
-                <div>
-                    <p>Playlist Title</p>
-                    <button>Add to playlist</button>
-                </div>
-            </div>
-            </div>
-            </section>
-        </section>
+           
 
-        <section>
-            <!-- search results, added programatically -->
-            <div id="results-container"></div>
-        </section>
     </main>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
