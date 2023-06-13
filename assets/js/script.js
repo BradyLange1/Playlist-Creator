@@ -3,6 +3,7 @@ var searchButtonEl = $('#search-button');
 var resultsEl = document.querySelector('#results');
 var addPlaylistButtonEl = $('#create-palaylist');
 var playlistNameEl = $('#playlist-name');
+var searchFormEl = $('#search-form')
 
 var playlists = JSON.parse(localStorage.getItem("userPlaylists"))
 if (playlists === null){
@@ -10,11 +11,11 @@ if (playlists === null){
 }
 
 const options = {
-    method: 'GET',
-    headers: {
-        'X-RapidAPI-Key': '55b71cba74msh84c291f4e9de668p126f59jsn31a18769a989',
-        'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
-    }
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '55b71cba74msh84c291f4e9de668p126f59jsn31a18769a989',
+		'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
+	}
 };
 
 function getInfo(input) {
@@ -30,41 +31,41 @@ function getInfo(input) {
 }
 
 function printDataToPage(results){
-    if (smth) {
-        //retrieve from local storage based on unique id, localStorage.getItem();
-        //parse stringified object
-        for (var i = 0; i < 0; i++) {
-            var resultsContainer = document.createElement('div');
-            var songCard = document.createElement('div');
-            var songImg = document.createElement('img');
-            var songTitle = document.createElement('h3');
-            var songArtist = document.createElement('p');
+    // if (smth) {
+    //     //retrieve from local storage based on unique id, localStorage.getItem();
+    //     //parse stringified object
+    //     for (var i = 0; i < 0; i++) {
+    //         var resultsContainer = document.createElement('div');
+    //         var songCard = document.createElement('div');
+    //         var songImg = document.createElement('img');
+    //         var songTitle = document.createElement('h3');
+    //         var songArtist = document.createElement('p');
 
-            var playlistTitle = traverse;
-            resultsContainer.append(playlistTitle);
+    //         var playlistTitle = traverse;
+    //         resultsContainer.append(playlistTitle);
 
-            var albumCover = traverse;
-            songImg.setAttribute('src', albumCover);
-            //songImg.classList.add('');
-            songCard.append(songImg)
+    //         var albumCover = traverse;
+    //         songImg.setAttribute('src', albumCover);
+    //         //songImg.classList.add('');
+    //         songCard.append(songImg)
 
-            var title = traverse;
-            songTitle.textContent = title;
-            //songTitle.classList.add('');
-            songCard.append(songTitle);
+    //         var title = traverse;
+    //         songTitle.textContent = title;
+    //         //songTitle.classList.add('');
+    //         songCard.append(songTitle);
 
-            var artistName = traverse;
-            songArtist.textContent = artistName;
-            //songArtist.classList.add('');
-            songCard.append(songArtist);
+    //         var artistName = traverse;
+    //         songArtist.textContent = artistName;
+    //         //songArtist.classList.add('');
+    //         songCard.append(songArtist);
 
-            resultsContainer.append(songCard);
-            //songCard.classList.add('');
+    //         resultsContainer.append(songCard);
+    //         //songCard.classList.add('');
 
-            resultsEl.append(resultsContainer);
+    //         resultsEl.append(resultsContainer);
 
-        }
-    } else {
+    //     }
+    // } else {
         if (results.data.length === 0) {
             resultsContainer.textContent = 'No search results found.';
             return;
@@ -104,32 +105,25 @@ function printDataToPage(results){
                   // console.log("this is the song", resultTitle);
                   // console.log("this is the artist", resultArtist);
                 }
-          } 
-    }
-};
-
-
-function addPlaylist(input) {
-    $("#playlist-form").append("<button class = user-playlist>" + input)
+            } 
+}
 
 function addPlaylist(input){
     $("#user-playlists").append("<button class = user-playlist>" + input)
-
 }
 
-searchButtonEl.on('click', function () {
-    var userInput = userInputEl.val()
-    getInfo(userInput)
-})
-
 // Entry validation 
-function validateForm() {
+function validateForm(event) {
+    event.preventDefault()
+    console.log("Validating form")
     let x = document.forms["myForm"]["fname"].value;
     if (x == "") {
       alert("Name must be filled out");
       return false;
     }
-  }
+}
+
+searchFormEl.on('submit', validateForm)
 
 // Adds song to playlist
 // addSong.on("click", function(event){
@@ -152,7 +146,6 @@ addPlaylistButtonEl.on('click', function(){
 
 // Execute a function when the user presses a key on the keyboard
 userInputEl.on("keypress", function (event) {
-
     // If the user presses the "Enter" key on the keyboard
     if (event.key === "Enter") {
         console.log("Enter for search!", event)
@@ -162,14 +155,15 @@ userInputEl.on("keypress", function (event) {
         searchButtonEl.click();
     }
 });
+
 searchButtonEl.on('click', function () {
-        var userInput = userInputEl.val()
-        getInfo(userInput)
-    })
+    var userInput = userInputEl.val()
+    getInfo(userInput)
+})
 
 
-    // fetch data based on search input
-    // populate data on page
+// fetch data based on search input
+// populate data on page
 
 // .playlist-card
 // .playlist-img
