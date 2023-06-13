@@ -126,7 +126,7 @@ main{
     align-items:center ;
 }
 
-.aside-bar button{
+.aside-button{
     float: left;
     border: 0;
     border-radius: 50%;
@@ -144,4 +144,14 @@ main{
 
 .creat-palaylist{
     align-items: center;
+}
+
+.user-playlist{
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+#user-playlists{
+    display: flex;
+    flex-direction: column;
 }
