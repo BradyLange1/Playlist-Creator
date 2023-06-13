@@ -1,8 +1,13 @@
 var userInputEl = $('#search-box');
 var searchButtonEl = $('#search-button');
 var resultsEl = document.querySelector('#results');
-var addPlaylistButtonEl = $('#add-playlist-button');
-var userInputPlaylistEl = $('#user-input-playlist');
+var addPlaylistButtonEl = $('#create-palaylist');
+var playlistNameEl = $('#playlist-name');
+
+var playlists = JSON.parse(localStorage.getItem("userPlaylists"))
+if (playlists === null){
+    playlists = []
+}
 
 const options = {
 	method: 'GET',
@@ -69,7 +74,8 @@ function printDataToPage(results){
 };
 
 function addPlaylist(input){
-    $("#playlist-form").append("<button class = user-playlist>" + input)
+    $("#user-playlists").append("<button class = user-playlist>" + input)
+
 }
 
 searchButtonEl.on('click', function(){
@@ -77,12 +83,22 @@ searchButtonEl.on('click', function(){
     getInfo(userInput)
 })
 
+
+// Adds song to playlist
+// addSong.on("click", function(event){
+//     playlists.push()
+// })
+
 addPlaylistButtonEl.on('click', function(){
-    var userInput = userInputPlaylistEl.val()
+    var userInput = playlistNameEl.val()
+    var userPlaylist = {
+        name: userInput,
+        songs: []
+    }
+    localStorage.setItem("userPlaylists", JSON.stringify(userPlaylist))
     addPlaylist(userInput)
 })
 
-<<<<<<< HEAD
 
 
 // Get the input field
@@ -108,8 +124,6 @@ searchButtonEl.on('click', function(){
 
 // fetch data based on search input
 // populate data on page
-=======
->>>>>>> 384dc49be13495a5f4d37d8e781334d76890019c
 
 // .playlist-card
 // .playlist-img

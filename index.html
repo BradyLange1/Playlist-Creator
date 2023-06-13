@@ -34,31 +34,21 @@
     <main>        
         <aside class="aside-bar" id="side-bar">
             <div class="home-page">
-                <button type="home-page">
-                <img src="./assets/Images/home-icon.svg" alt="Home" class="icon home-icon">
+                <button type="home-page" class="aside-button">
+                    <img src="./assets/Images/home-icon.svg" alt="Home" class="icon home-icon">
                 </button><p>Home</p>
             </div>
             <div>
-                <button type="playlist" class="creat-palaylist">
+                <button type="playlist" id="create-palaylist" class="aside-button">
                     <img src="./assets/Images/playlist-icon.svg" alt="" class="icon">
-                </button><p>Creat playlist</p>
-                </div><br>
+                </button><p>Create new playlist</p>
+                <input style="color: white;" type="text" placeholder="Enter Playlist Name" id="playlist-name">
+            </div>
             <div>
                 <!-- playlist section, new cards added programatically -->
-                <p>Playlist</p>
+                <p>Playlists</p>
                 <hr>
-                <div>
-                    <button>
-                        <img src=""  class="album-icon">
-                        <p></p>
-                    </button>
-                </div>
-                <div>
-                    <button>
-                        <img src=""  class="album-icon">
-                        <p></p>
-                    </button>
-                </div>
+                <div id="user-playlists"></div>
             </div>
         </aside>
 
@@ -91,27 +81,6 @@
                 <p></p>
             </section>
         </div>
-        
-
-        <!-- playlist section, new cards added programatically -->
-        <div class="playlist-card">
-            <img src="" alt="">       
-            
-
-        </section>
-        
-        <!-- playlist section, new cards added programatically -->
-        <section>
-            <h3>Playlists</h3>
-            <div id="playlist-form">
-              <input id="user-input-playlist" type="text" placeholder="StudyPlaylist"/>
-              <button type="submit" id="add-playlist-button">
-                <img src="" alt="">
-              </button>
-
-            </div>
-        </section>
-
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
