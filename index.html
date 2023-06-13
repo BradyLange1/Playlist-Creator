@@ -34,57 +34,51 @@
     <main>        
         <aside class="aside-bar" id="side-bar">
             <div class="home-page">
-                <button type="home-page">
-                <img src="./assets/Images/home-icon.svg" alt="Home" class="icon home-icon">
+                <button type="home-page" class="aside-button">
+                    <img src="./assets/Images/home-icon.svg" alt="Home" class="icon home-icon">
                 </button><p>Home</p>
             </div>
             <div>
-                <button type="playlist" class="creat-palaylist">
+                <button type="playlist" id="create-palaylist" class="aside-button">
                     <img src="./assets/Images/playlist-icon.svg" alt="" class="icon">
-                </button><p>Creat playlist</p>
-                </div><br>
+                </button><p>Create new playlist</p>
+                <input style="color: white;" type="text" placeholder="Enter Playlist Name" id="playlist-name">
+            </div>
             <div>
                 <!-- playlist section, new cards added programatically -->
-                <p>Playlist</p>
+                <p>Playlists</p>
                 <hr>
-                <div>
-                    <button>
-                        <img src=""  class="album-icon">
-                        <p></p>
-                    </button>
-                </div>
-                <div>
-                    <button>
-                        <img src=""  class="album-icon">
-                        <p></p>
-                    </button>
-                </div>
+                <div id="user-playlists"></div>
             </div>
         </aside>
-        <!-- search results, added programatically -->
-        <aside class="results-container" id="search-container">
+
+        <!-- search results, added HERE -->
+        <div id="results"></div>
+
+        <!-- search results styling practice -->
+        <div class="results-container" id="search-container">
             <section class="cards">
                 <img src="" alt="">
-                <p></p><!--Title-->
-                <p></p><!--Title-->
+                <p></p>
+                <p></p>
             </section>
 
             <section class="cards">
                 <img src="" alt="">
-                <p></p><!--Title-->
-                <p></p><!--Title-->
+                <p></p>
+                <p></p>
             </section>
 
             <section class="cards">
                 <img src="" alt="">
-                <p></p><!--Title-->
-                <p></p><!--Title-->
+                <p></p>
+                <p></p>
             </section>
 
             <section class="cards">
                 <img src="" alt="">
-                <p></p><!--Title-->
-                <p></p><!--Title-->
+                <p></p>
+                <p></p>
             </section>
         </aside>
         
@@ -112,6 +106,7 @@
               <button type="submit" id="add-playlist-button">
                 <img src="" alt="">
               </button>
+
             </div>
         </section>
 

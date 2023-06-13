@@ -22,6 +22,9 @@ html{
     background-size: 100%;
 }
 
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+    border-bottom: none;
+}
 .header-parents{
     display: flex;
     align-items: center;
@@ -79,6 +82,7 @@ html{
     background: transparent;
     background: var(--search-box);
     cursor: pointer;
+    margin-right: 10px;
 }
 .icon{
     float: right;
@@ -123,7 +127,7 @@ main{
     align-items:center ;
 }
 
-.aside-bar button{
+.aside-button{
     float: left;
     border: 0;
     border-radius: 50%;
@@ -141,4 +145,14 @@ main{
 
 .creat-palaylist{
     align-items: center;
+}
+
+.user-playlist{
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+#user-playlists{
+    display: flex;
+    flex-direction: column;
 }
