@@ -136,7 +136,8 @@ $('#results').on('click', ".add-song", function(){
 
 $('#playlists-modal').on('click', '.playlist-selected', function(){
     var playlistSelected = $(this).text()
-    var playlistSelectedObject = playlists.find((x) => x.name = playlistSelected)
+    var playlistSelectedObject = playlists.find((x) => x.name == playlistSelected)
+    console.log(playlistSelectedObject)
     playlistSelectedObject.songs.push(song)
     localStorage.setItem("userPlaylists", JSON.stringify(playlists))
 })
