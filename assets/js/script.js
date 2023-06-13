@@ -29,47 +29,82 @@ function getInfo(input) {
         })
 }
 
-function printDataToPage(results) {
-    if (results.data.length === 0) {
-        resultsContainer.textContent = 'No search results found.';
-        return;
-    } else {
-        for (var i = 0; i < results.data.length; i++) {
-
+function printDataToPage(results){
+    if (smth) {
+        //retrieve from local storage based on unique id, localStorage.getItem();
+        //parse stringified object
+        for (var i = 0; i < 0; i++) {
             var resultsContainer = document.createElement('div');
-            var resultCard = document.createElement('div');
-            var resultImg = document.createElement('img');
-            var resultTitle = document.createElement('h3');
-            var resultArtist = document.createElement('p');
-            var addBtn = document.createElement('button');
+            var songCard = document.createElement('div');
+            var songImg = document.createElement('img');
+            var songTitle = document.createElement('h3');
+            var songArtist = document.createElement('p');
 
-            var albumCover = results.data[i].album.cover_medium;
-            resultImg.setAttribute('src', albumCover);
-            //resultImg.classList.add('');
-            resultCard.append(resultImg)
+            var playlistTitle = traverse;
+            resultsContainer.append(playlistTitle);
 
-            var songTitle = results.data[i].title;
-            resultTitle.textContent = songTitle;
-            //resultTitle.classList.add('');
-            resultCard.append(resultTitle);
+            var albumCover = traverse;
+            songImg.setAttribute('src', albumCover);
+            //songImg.classList.add('');
+            songCard.append(songImg)
 
-            var artistName = results.data[i].artist.name;
-            resultArtist.textContent = artistName;
-            //resultArtist.classList.add('');
-            resultCard.append(resultArtist);
+            var title = traverse;
+            songTitle.textContent = title;
+            //songTitle.classList.add('');
+            songCard.append(songTitle);
 
-            //addBtn.classList.add('');
-            resultCard.append(addBtn);
+            var artistName = traverse;
+            songArtist.textContent = artistName;
+            //songArtist.classList.add('');
+            songCard.append(songArtist);
 
-            resultsContainer.append(resultCard);
-            //resultCard.classList.add('');
+            resultsContainer.append(songCard);
+            //songCard.classList.add('');
 
             resultsEl.append(resultsContainer);
 
-            // console.log("this is the cover", resultImg);
-            // console.log("this is the song", resultTitle);
-            // console.log("this is the artist", resultArtist);
         }
+    } else {
+        if (results.data.length === 0) {
+            resultsContainer.textContent = 'No search results found.';
+            return;
+          } else {
+              for (var i = 0; i < results.data.length; i++) {
+                  var resultsContainer = document.createElement('div');
+                  var resultCard = document.createElement('div');
+                  var resultImg = document.createElement('img');
+                  var resultTitle = document.createElement('h3');
+                  var resultArtist = document.createElement('p');
+                  var addBtn = document.createElement('button');
+      
+                  var albumCover = results.data[i].album.cover_medium;
+                  resultImg.setAttribute('src', albumCover);
+                  //resultImg.classList.add('');
+                  resultCard.append(resultImg)
+      
+                  var songTitle = results.data[i].title;
+                  resultTitle.textContent = songTitle;
+                  //resultTitle.classList.add('');
+                  resultCard.append(resultTitle);
+      
+                  var artistName = results.data[i].artist.name;
+                  resultArtist.textContent = artistName;
+                  //resultArtist.classList.add('');
+                  resultCard.append(resultArtist);
+      
+                  //addBtn.classList.add('');
+                  resultCard.append(addBtn);
+      
+                  resultsContainer.append(resultCard);
+                  //resultCard.classList.add('');
+      
+                  resultsEl.append(resultsContainer);
+      
+                  // console.log("this is the cover", resultImg);
+                  // console.log("this is the song", resultTitle);
+                  // console.log("this is the artist", resultArtist);
+                }
+          } 
     }
 };
 
@@ -110,7 +145,6 @@ addPlaylistButtonEl.on('click', function(){
     localStorage.setItem("userPlaylists", JSON.stringify(userPlaylist))
     addPlaylist(userInput)
 })
-
 
 
 // Get the input field
