@@ -25,7 +25,7 @@ function getInfo(input) {
             return response.json()
         })
         .then(function (data) {
-            console.log(data);
+            //console.log(data);
             printDataToPage(data);
         })
 }
@@ -93,7 +93,10 @@ function printDataToPage(results){
                   //resultArtist.classList.add('');
                   resultCard.append(resultArtist);
       
-                  //addBtn.classList.add('');
+                  addBtn.classList.add('add-song');
+                  addBtn.setAttribute('data-title', songTitle)
+                  addBtn.setAttribute('data-artist', artistName)
+                  addBtn.setAttribute('data-albumCover', albumCover)
                   resultCard.append(addBtn);
       
                   resultsContainer.append(resultCard);
@@ -105,17 +108,33 @@ function printDataToPage(results){
                   // console.log("this is the song", resultTitle);
                   // console.log("this is the artist", resultArtist);
                 }
-            } 
+            }       
 }
 
+$('#results').on('click', ".add-song", function(){
+    var title = $(this).attr("data-title")
+    var artist = $(this).attr("data-artist")
+    var cover = $(this).attr("data-albumCover")
+    var song = {
+        name: title,
+        artistName: artist,
+        albumCover: cover
+    }
+    
+    console.log(title)
+    console.log(artist)
+    console.log(cover)
+})
+
 function addPlaylist(input){
+    var dataTwo = getData()
+    console.log(dataTwo)
     $("#user-playlists").append("<button class = user-playlist>" + input)
 }
 
 // Entry validation 
 function validateForm(event) {
     event.preventDefault()
-    console.log("Validating form")
     let x = document.forms["myForm"]["fname"].value;
     if (x == "") {
       alert("Name must be filled out");
