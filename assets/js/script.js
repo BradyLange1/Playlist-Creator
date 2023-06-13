@@ -111,6 +111,10 @@ function printDataToPage(results){
 function addPlaylist(input){
     $("#user-playlists").append("<button class = user-playlist>" + input)
 }
+// function addPlaylist(input){
+//     $("#user-playlists").append("<button class = user-playlist>" + input)
+
+// }
 
 // Entry validation 
 function validateForm(event) {

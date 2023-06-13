@@ -8,7 +8,7 @@
     <!--Import materialize.css-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    
+
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Playlist Creator</title>
 </head>
@@ -17,30 +17,34 @@
     <header>
         <div>
             <div class="header-parents">
-                <div class="logo-container"><img class="logo header-child header-bar" src="./assets/Images/logo.svg"></div>
+                <div class="logo-container"><img class="logo header-child header-bar" src="./assets/Images/logo.svg">
+                </div>
                 <!-- search section, just an example for how it would look if only searching for things based on song title, other search parameters can be added later -->
                 <form id="search-form" name="myForm" class="search-bar header-bar">
                     <button type="submit" value="Submit" id="search-button">
                         <!-- <img src="./assets/Images/Search-icon.svg" alt="Search"> -->
                         <i class="material-icons white-text">search</i>
                     </button>
-                    <input class="search-box header-child" id="search-box" type="text" name="fname" placeholder="Search your favorite Genres, Songs, or Artists" autofocus="true" />
+                    <input class="search-box header-child" id="search-box" type="text" name="fname"
+                        placeholder="Search your favorite Genres, Songs, or Artists" autofocus="true" />
                 </form>
             </div>
         </div>
     </header>
 
-    <main>        
+    <main>
         <aside class="aside-bar" id="side-bar">
             <div class="home-page">
                 <button type="home-page" class="aside-button">
                     <img src="./assets/Images/home-icon.svg" alt="Home" class="icon home-icon">
-                </button><p>Home</p>
+                </button>
+                <p>Home</p>
             </div>
             <div>
                 <button type="playlist" id="create-palaylist" class="aside-button">
                     <img src="./assets/Images/playlist-icon.svg" alt="" class="icon">
-                </button><p>Create new playlist</p>
+                </button>
+                <p>Create new playlist</p>
                 <input style="color: white;" type="text" placeholder="Enter Playlist Name" id="playlist-name">
             </div>
             <div>
@@ -52,10 +56,13 @@
         </aside>
 
         <!-- search results, added HERE -->
-        <div id="results"></div>
+        <div class="results-container">
+            <div id="results"  class="results">
+            </div>
+        </div>
 
         <!-- search results styling practice -->
-        <div class="results-container" id="search-container">
+        <!-- <aside class="results-container" id="search-container">
             <section class="cards">
                 <img src="" alt="">
                 <p></p>
@@ -79,7 +86,34 @@
                 <p></p>
                 <p></p>
             </section>
-        </div>
+        </aside> -->
+
+
+
+
+        <!-- playlist section, new cards added programatically -->
+        <div class="playlist-card">
+            <img src="" alt="">
+
+
+
+
+            <!-- search results, added programatically -->
+            <div class="results-container" id="search-container"></div>
+            </section>
+
+            <!-- playlist section, new cards added programatically -->
+            <!-- <section>
+            <h3>Playlists</h3>
+            <div id="playlist-form">
+              <input id="user-input-playlist" type="text" placeholder="StudyPlaylist"/>
+              <button type="submit" id="add-playlist-button">
+                <img src="" alt="">
+              </button>
+
+            </div>
+        </section> -->
+
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
