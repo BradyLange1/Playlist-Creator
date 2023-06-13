@@ -10,20 +10,20 @@ if (playlists === null){
 }
 
 const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '55b71cba74msh84c291f4e9de668p126f59jsn31a18769a989',
-		'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
-	}
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Key': '55b71cba74msh84c291f4e9de668p126f59jsn31a18769a989',
+        'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
+    }
 };
 
-function getInfo(input){
+function getInfo(input) {
     const artistUrl = 'https://deezerdevs-deezer.p.rapidapi.com/search?q=' + input;
     fetch(artistUrl, options)
-        .then(function(response){
+        .then(function (response) {
             return response.json()
         })
-        .then(function(data){
+        .then(function (data) {
             console.log(data);
             printDataToPage(data);
         })
@@ -62,6 +62,7 @@ function printDataToPage(results){
             //songCard.classList.add('');
 
             resultsEl.append(resultsContainer);
+
         }
     } else {
         if (results.data.length === 0) {
@@ -107,16 +108,28 @@ function printDataToPage(results){
     }
 };
 
+
+function addPlaylist(input) {
+    $("#playlist-form").append("<button class = user-playlist>" + input)
+
 function addPlaylist(input){
     $("#user-playlists").append("<button class = user-playlist>" + input)
 
 }
 
-searchButtonEl.on('click', function(){
+searchButtonEl.on('click', function () {
     var userInput = userInputEl.val()
     getInfo(userInput)
 })
 
+// Entry validation 
+function validateForm() {
+    let x = document.forms["myForm"]["fname"].value;
+    if (x == "") {
+      alert("Name must be filled out");
+      return false;
+    }
+  }
 
 // Adds song to playlist
 // addSong.on("click", function(event){
@@ -138,25 +151,25 @@ addPlaylistButtonEl.on('click', function(){
 
 
 // Execute a function when the user presses a key on the keyboard
-userInputEl.on("keypress", function(event) {
-    
-  // If the user presses the "Enter" key on the keyboard
-  if (event.key === "Enter") {
-    console.log("Enter for search!", event)
-    // Cancel the default action, if needed
-    event.preventDefault();
-    // Trigger the button element with a click
-    searchButtonEl.click();
-  }
+userInputEl.on("keypress", function (event) {
+
+    // If the user presses the "Enter" key on the keyboard
+    if (event.key === "Enter") {
+        console.log("Enter for search!", event)
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        searchButtonEl.click();
+    }
 });
-searchButtonEl.on('click', function(){
-    var userInput = userInputEl.val()
-    getInfo(userInput)
-})
+searchButtonEl.on('click', function () {
+        var userInput = userInputEl.val()
+        getInfo(userInput)
+    })
 
 
-// fetch data based on search input
-// populate data on page
+    // fetch data based on search input
+    // populate data on page
 
 // .playlist-card
 // .playlist-img

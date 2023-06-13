@@ -20,13 +20,13 @@
  
                 <div class="logo-container"><img class="logo header-child header-bar" src="./assets/Images/logo.svg"></div>
                 <!-- search section, just an example for how it would look if only searching for things based on song title, other search parameters can be added later -->
-                <div class="search-bar header-bar">
-                    <button type="submit" id="search-button">
+                <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post" class="search-bar header-bar">
+                    <button type="submit" value="Submit" id="search-button">
                         <!-- <img src="./assets/Images/Search-icon.svg" alt="Search"> -->
                         <i class="material-icons white-text">search</i>
                     </button>
-                    <input class="search-box header-child" id="search-box" type="text" placeholder="Search your favorite Genres, Songs, or Artists" autofocus="true" />
-                <div>
+                    <input class="search-box header-child" id="search-box" type="text" name="fname" placeholder="Search your favorite Genres, Songs, or Artists" autofocus="true" />
+                <form>
             </div>
         </div>
     </header>
