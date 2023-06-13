@@ -1,9 +1,11 @@
 var userInputEl = $('#search-box');
 var searchButtonEl = $('#search-button');
 var resultsEl = document.querySelector('#results');
-var addPlaylistButtonEl = $('#create-palaylist');
+var addPlaylistButtonEl = $('#create-playlist');
 var playlistNameEl = $('#playlist-name');
 var searchFormEl = $('#search-form')
+
+var song = {}
 
 var playlists = JSON.parse(localStorage.getItem("userPlaylists"))
 if (playlists === null){
@@ -25,7 +27,7 @@ function getInfo(input) {
             return response.json()
         })
         .then(function (data) {
-            console.log(data);
+            //console.log(data);
             printDataToPage(data);
         })
 }
@@ -92,8 +94,12 @@ function printDataToPage(results){
                   resultArtist.textContent = artistName;
                   //resultArtist.classList.add('');
                   resultCard.append(resultArtist);
-      
-                  //addBtn.classList.add('');
+
+                  addBtn.classList.add('add-song', 'btn', 'modal-trigger');
+                  addBtn.setAttribute('data-title', songTitle)
+                  addBtn.setAttribute('data-artist', artistName)
+                  addBtn.setAttribute('data-albumCover', albumCover)
+                  addBtn.setAttribute('data-target', 'modal1')
                   resultCard.append(addBtn);
       
                   resultsContainer.append(resultCard);
@@ -105,8 +111,36 @@ function printDataToPage(results){
                   // console.log("this is the song", resultTitle);
                   // console.log("this is the artist", resultArtist);
                 }
-            } 
+            }       
 }
+
+//displays playlists to aside bar and to modal
+function displayUserPlaylists(){
+    for (i = 0; i < playlists.length; i++){
+        $('#user-playlists').append('<button>' + playlists[i].name + '</button>')
+        $('#playlists-modal').append('<button class=playlist-selected>' + playlists[i].name + '</button>')
+    }
+}
+displayUserPlaylists()
+
+$('#results').on('click', ".add-song", function(){
+    var title = $(this).attr("data-title")
+    var artist = $(this).attr("data-artist")
+    var cover = $(this).attr("data-albumCover")
+    song = {
+        name: title,
+        artistName: artist,
+        albumCover: cover
+    }
+})
+
+$('#playlists-modal').on('click', '.playlist-selected', function(){
+    var playlistSelected = $(this).text()
+    var playlistSelectedObject = playlists.find((x) => x.name == playlistSelected)
+    console.log(playlistSelectedObject)
+    playlistSelectedObject.songs.push(song)
+    localStorage.setItem("userPlaylists", JSON.stringify(playlists))
+})
 
 function addPlaylist(input){
     $("#user-playlists").append("<button class = user-playlist>" + input)
@@ -119,7 +153,6 @@ function addPlaylist(input){
 // Entry validation 
 function validateForm(event) {
     event.preventDefault()
-    console.log("Validating form")
     let x = document.forms["myForm"]["fname"].value;
     if (x == "") {
       alert("Name must be filled out");
@@ -140,7 +173,8 @@ addPlaylistButtonEl.on('click', function(){
         name: userInput,
         songs: []
     }
-    localStorage.setItem("userPlaylists", JSON.stringify(userPlaylist))
+    playlists.push(userPlaylist)
+    localStorage.setItem("userPlaylists", JSON.stringify(playlists))
     addPlaylist(userInput)
 })
 

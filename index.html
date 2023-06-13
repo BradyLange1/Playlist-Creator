@@ -41,7 +41,7 @@
                 <p>Home</p>
             </div>
             <div>
-                <button type="playlist" id="create-palaylist" class="aside-button">
+                <button type="playlist" id="create-playlist" class="aside-button">
                     <img src="./assets/Images/playlist-icon.svg" alt="" class="icon">
                 </button>
                 <p>Create new playlist</p>
@@ -60,7 +60,16 @@
             <div id="results"  class="results">
             </div>
         </div>
-
+          <!-- Modal Structure -->
+        <div style="color: black;" id="modal1" class="modal bottom-sheet">
+            <div class="modal-content">
+                <h4>Select Playlist to add Song to</h4>
+                <div id="playlists-modal"></div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
         <!-- search results styling practice -->
         <!-- <aside class="results-container" id="search-container">
             <section class="cards">
@@ -115,9 +124,14 @@
         </section> -->
 
     </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="assets/js/script.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.modal').modal();
+        });
+    </script>
 </body>
 
 </html>
