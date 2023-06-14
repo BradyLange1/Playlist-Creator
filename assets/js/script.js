@@ -55,17 +55,17 @@ function printSearch(results){
       
             var albumCover = results.data[i].album.cover_medium;
             resultImg.attr('src', albumCover);
-            //resultImg.classList.add('');
+            //resultImg.addClass('');
             resultCard.append(resultImg);
       
             var songTitle = results.data[i].title;
             resultTitle.text(songTitle);
-            //resultTitle.classList.add('');
+            //resultTitle.addClass('');
             resultCard.append(resultTitle);
       
             var artistName = results.data[i].artist.name;
             resultArtist.text(artistName);
-            //resultArtist.classList.add('');
+            //resultArtist.addClass('');
             resultCard.append(resultArtist);
             resultCard.append(audioTag)
             audioTag.attr('src', results.data[i].preview)
@@ -80,8 +80,8 @@ function printSearch(results){
             addBtn.attr('data-audio', results.data[i].preview)
             resultCard.append(addBtn);
       
-            resultsEl.append(resultCard);
             resultCard.addClass('search-result-card');
+            resultsEl.append(resultCard);
             }
         }
 }
@@ -114,21 +114,21 @@ function printPlaylist(playlistObject){
         var audioMP3 = playlistObject.songs[i].audioPreview
         var albumCover = playlistObject.songs[i].albumCover;
         songImg.attr('src', albumCover);
-        //songImg.classList.add('');
+        //songImg.addClass('');
         songCard.append(songImg)
 
         var title = playlistObject.songs[i].name;
         songTitle.text(title);
-        //songTitle.classList.add('');
+        //songTitle.addClass('');
         songCard.append(songTitle);
 
         var artistName = playlistObject.songs[i].artistName;
         songArtist.text(artistName);
-        //songArtist.classList.add('');
+        //songArtist.addClass('');
         songCard.append(songArtist);
 
         resultsContainer.append(songCard);
-        //songCard.classList.add('');
+        //songCard.addClass('');
 
         resultsEl.append(resultsContainer);
 
@@ -143,7 +143,13 @@ function printPlaylist(playlistObject){
 //displays playlists to aside bar and to modal
 function displayUserPlaylists(){
     for (i = 0; i < playlists.length; i++){
-        $('#user-playlists').append('<button class=user-playlist>' + playlists[i].name + '</button>')
+        var userPlaylist = $('<div>');
+
+        userPlaylist.text(playlists[i].name);
+        userPlaylist.append('<button class=open-playlist-btn></button>');
+        userPlaylist.append('<button class=delete-playlist-btn></button>');
+        $('#user-playlists').append(userPlaylist);
+
         $('#playlists-modal').append('<button class=playlist-selected>' + playlists[i].name + '</button>')
     }
 }
