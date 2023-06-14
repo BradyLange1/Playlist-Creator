@@ -55,22 +55,24 @@ function printSearch(results){
       
             var albumCover = results.data[i].album.cover_medium;
             resultImg.attr('src', albumCover);
-            //resultImg.addClass('');
+            resultImg.addClass('albumCover');
             resultCard.append(resultImg);
       
             var songTitle = results.data[i].title;
             resultTitle.text(songTitle);
-            //resultTitle.addClass('');
+            resultTitle.addClass('songTitle');
             resultCard.append(resultTitle);
       
             var artistName = results.data[i].artist.name;
             resultArtist.text(artistName);
-            //resultArtist.addClass('');
+            resultArtist.addClass('artistName');
             resultCard.append(resultArtist);
             resultCard.append(audioTag)
             audioTag.attr('src', results.data[i].preview)
             audioTag.attr('type', "audio/mpeg")
             audioTag.append(audioPreview)
+            audioTag.addClass("audioPreview")    
+            /////////////Marjan Added class for audioRag///////////
 
             addBtn.addClass('add-song modal-trigger');
             addBtn.attr('data-title', songTitle);
