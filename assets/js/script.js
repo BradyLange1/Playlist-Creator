@@ -52,6 +52,8 @@ function printSearch(results){
             var resultTitle = $('<h3>');
             var resultArtist = $('<p>');
             var addBtn = $('<button>');
+            var audioTag = $('<audio controls>')
+            var audioPreview = $('source')
       
             var albumCover = results.data[i].album.cover_medium;
             // resultImg.setAttribute('src', albumCover);
@@ -70,6 +72,10 @@ function printSearch(results){
             resultArtist.text(artistName);
             //resultArtist.classList.add('');
             resultCard.append(resultArtist);
+            resultCard.append(audioTag)
+            audioTag.attr('src', results.data[i].preview)
+            audioTag.attr('type', "audio/mpeg")
+            audioTag.append(audioPreview)
 
             // addBtn.classList.add('add-song', 'btn', 'modal-trigger');
             // addBtn.setAttribute('data-title', songTitle);
