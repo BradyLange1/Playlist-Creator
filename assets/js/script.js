@@ -50,6 +50,8 @@ function printSearch(results){
             var resultTitle = $('<h3>');
             var resultArtist = $('<p>');
             var addBtn = $('<button>');
+            var audioTag = $('<audio controls>')
+            var audioPreview = $('source')
       
             var albumCover = results.data[i].album.cover_medium;
             resultImg.attr('src', albumCover);
@@ -65,16 +67,23 @@ function printSearch(results){
             resultArtist.text(artistName);
             resultArtist.addClass('artistName');
             resultCard.append(resultArtist);
+            resultCard.append(audioTag)
+            audioTag.attr('src', results.data[i].preview)
+            audioTag.attr('type', "audio/mpeg")
+            audioTag.append(audioPreview)
+            audioTag.addClass("audioPreview")    
+            /////////////Marjan Added class for audioRag///////////
 
             addBtn.addClass('add-song modal-trigger');
             addBtn.attr('data-title', songTitle);
             addBtn.attr('data-artist', artistName);
             addBtn.attr('data-albumCover', albumCover);
             addBtn.attr('data-target', 'modal1');
+            addBtn.attr('data-audio', results.data[i].preview)
             resultCard.append(addBtn);
+      
             resultCard.addClass('search-result-card');
             resultsEl.append(resultCard);
-            
             }
         }
 }
@@ -101,26 +110,34 @@ function printPlaylist(playlistObject){
         var songImg = $('<img>');
         var songTitle = $('<h3>');
         var songArtist = $('<p>');
+        var audioTag = $('<audio controls>')
+        var audioPreview = $('source')
 
+        var audioMP3 = playlistObject.songs[i].audioPreview
         var albumCover = playlistObject.songs[i].albumCover;
         songImg.attr('src', albumCover);
-        //songImg.classList.add('');
+        //songImg.addClass('');
         songCard.append(songImg)
 
         var title = playlistObject.songs[i].name;
         songTitle.text(title);
-        //songTitle.classList.add('');
+        //songTitle.addClass('');
         songCard.append(songTitle);
 
         var artistName = playlistObject.songs[i].artistName;
         songArtist.text(artistName);
-        //songArtist.classList.add('');
+        //songArtist.addClass('');
         songCard.append(songArtist);
 
         resultsContainer.append(songCard);
-        //songCard.classList.add('');
+        //songCard.addClass('');
 
         resultsEl.append(resultsContainer);
+
+        songCard.append(audioTag)
+        audioTag.attr('src', audioMP3)
+        audioTag.attr('type', "audio/mpeg")
+        audioTag.append(audioPreview)
     }
 }
 
@@ -128,7 +145,13 @@ function printPlaylist(playlistObject){
 //displays playlists to aside bar and to modal
 function displayUserPlaylists(){
     for (i = 0; i < playlists.length; i++){
-        $('#user-playlists').append('<button class=user-playlist>' + playlists[i].name + '</button>')
+        var userPlaylist = $('<div>');
+
+        userPlaylist.text(playlists[i].name);
+        userPlaylist.append('<button class=open-playlist-btn></button>');
+        userPlaylist.append('<button class=delete-playlist-btn></button>');
+        $('#user-playlists').append(userPlaylist);
+
         $('#playlists-modal').append('<button class=playlist-selected>' + playlists[i].name + '</button>')
     }
 }
@@ -140,10 +163,12 @@ $('#results').on('click', ".add-song", function(){
     var title = $(this).attr("data-title")
     var artist = $(this).attr("data-artist")
     var cover = $(this).attr("data-albumCover")
+    var audio = $(this).attr("data-audio")
     song = {
         name: title,
         artistName: artist,
-        albumCover: cover
+        albumCover: cover,
+        audioPreview: audio
     }
 })
 

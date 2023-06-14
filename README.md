@@ -40,9 +40,10 @@ playlist creation and generation, search based on genre, artist, song, etc
 
 
 ## wireframe or sketch of design
-![High-fidelity wireframe](./assets/images/High-fi.jpg)
+
 https://www.figma.com/file/DArxNL5IE4bz3VY6NdFliq/Untitled?type=design&t=iFXlxdW3lphaqJ0P-6
 
+![High-fidelity wireframe](./assets/Images/High-fi.jpg)
 ## APIs to be used
 - deezer
 - other music APIs TBD
