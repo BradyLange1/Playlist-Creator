@@ -119,10 +119,10 @@ main{
 }
 
 .aside-bar{
-     /* flex: 1; */
+     flex: 0 0 200px;
      background-color: var(--sectionBack);
      padding: 20px;
-     width: 20vw;
+     /* width: 20vw; */
      border-radius: 15px;
      border-radius: 20px;
      align-items: center;
@@ -259,8 +259,9 @@ input:-webkit-autofill {
 
 .songCard{
     display:block;
+    flex: 1 0 1000px;
     background-color: var(--sectionBack);
-    width: 70vw;
+    /* width: 70vw; */
     height: 20vh;
     align-items: center;
     margin-bottom: 20px;
@@ -282,7 +283,7 @@ input:-webkit-autofill {
 }
 
 .songArtist{
-    display:inline-block;
+    display:inline;
     font-size: 14px;
     /* margin-left: 10%;
     margin-top: 3%;
@@ -291,7 +292,7 @@ input:-webkit-autofill {
 
 .audioPreviewPlaylist{
     display:inline;
-    width: 25vw;
+    width: 200px;
     height: 5vh;
     margin-left: 4%;
     margin-top: 5%;
