@@ -55,24 +55,24 @@ function printSearch(results){
       
             var albumCover = results.data[i].album.cover_medium;
             resultImg.attr('src', albumCover);
-            resultImg.addClass('albumCover');
+            resultImg.addClass('resultImg');
             resultCard.append(resultImg);
       
             var songTitle = results.data[i].title;
             resultTitle.text(songTitle);
-            resultTitle.addClass('songTitle');
+            resultTitle.addClass('resultTitle');
             resultCard.append(resultTitle);
       
             var artistName = results.data[i].artist.name;
             resultArtist.text(artistName);
-            resultArtist.addClass('artistName');
+            resultArtist.addClass('resultArtist');
             resultCard.append(resultArtist);
             resultCard.append(audioTag)
 
             audioTag.attr('src', results.data[i].preview)
             audioTag.attr('type', "audio/mpeg")
-            audioTag.append(audioPreview)
-            audioTag.addClass("audioPreview")    
+            audioTag.addClass("audioPreviewSearch") 
+            audioTag.append(audioPreview)   
             /////////////Marjan Added class for audioTag///////////
 
             addBtn.addClass('add-song modal-trigger');
@@ -102,7 +102,8 @@ function printPlaylist(playlistObject){
     resultsEl.html("");
 
     var resultsContainer = $('<div>');
-    var playlistTitle = playlistObject.name;
+    var playlistTitle = $('<h2>' + playlistObject.name + '<h2>');
+    playlistTitle.addClass('playlistTitle');
     resultsContainer.append(playlistTitle);
 
     for (var i = 0; i < playlistObject.songs.length; i++) {
@@ -133,6 +134,7 @@ function printPlaylist(playlistObject){
 
         audioTag.attr('src', audioMP3)
         audioTag.attr('type', "audio/mpeg")
+        audioTag.addClass("audioPreviewPlaylist")
         audioTag.append(audioPreview)
         songCard.append(audioTag)
 
