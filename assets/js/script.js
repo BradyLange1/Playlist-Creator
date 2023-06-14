@@ -34,9 +34,10 @@ function getInfo(input) {
 }
 
 function printSearch(results){
-    resultsEl.innerHTML = "";
+    resultsEl.html("");
+
     if (results.data.length === 0) {
-        resultsContainer.textContent = 'No search results found.';
+        resultsContainer.text('No search results found.');
         return;
     } else {
         for (var i = 0; i < results.data.length; i++) {
@@ -75,7 +76,7 @@ function printSearch(results){
             // addBtn.setAttribute('data-artist', artistName);
             // addBtn.setAttribute('data-albumCover', albumCover);
             // addBtn.setAttribute('data-target', 'modal1');
-            addBtn.addClass('add-song', 'btn', 'modal-trigger');
+            addBtn.addClass('add-song modal-trigger');
             addBtn.attr('data-title', songTitle);
             addBtn.attr('data-artist', artistName);
             addBtn.attr('data-albumCover', albumCover);
@@ -83,7 +84,7 @@ function printSearch(results){
             resultCard.append(addBtn);
       
             resultsEl.append(resultCard);
-            resultCard.classList.add('search-result-card');
+            resultCard.addClass('search-result-card');
       
             // resultsEl.append(resultsContainer);
       
@@ -94,58 +95,58 @@ function printSearch(results){
         }
 }
 
-$('#user-playlists').on('click', '.user-playlist', function(){
-    var playlistSelected = $(this).text();
-    var playlistSelectedObject = playlists.find((x) => x.name == playlistSelected);
+// $('#user-playlists').on('click', '.user-playlist', function(){
+//     var playlistSelected = $(this).text();
+//     var playlistSelectedObject = playlists.find((x) => x.name == playlistSelected);
 
-    printPlaylist();
-})
+//     printPlaylist();
+// })
 
-function printPlaylist(){
-    resultsEl.html("");
-    //retrieve from local storage based on unique id, localStorage.getItem();
-    //parse stringified object
+// function printPlaylist(){
+//     resultsEl.html("");
+//     //retrieve from local storage based on unique id, localStorage.getItem();
+//     //parse stringified object
 
-    var resultsContainer = $('<div>');
-    var playlistTitle = idName;
-    resultsContainer.append(playlistTitle);
+//     var resultsContainer = $('<div>');
+//     var playlistTitle = idName;
+//     resultsContainer.append(playlistTitle);
 
-    for (var i = 0; i < playlistSelected.length; i++) {
-        // var resultsContainer = document.createElement('div');
-        // var songCard = document.createElement('div');
-        // var songImg = document.createElement('img');
-        // var songTitle = document.createElement('h3');
-        // var songArtist = document.createElement('p');
+//     for (var i = 0; i < playlistSelected.length; i++) {
+//         // var resultsContainer = document.createElement('div');
+//         // var songCard = document.createElement('div');
+//         // var songImg = document.createElement('img');
+//         // var songTitle = document.createElement('h3');
+//         // var songArtist = document.createElement('p');
 
-        var songCard = $('<div>');
-        var songImg = $('<img>');
-        var songTitle = $('<h3>');
-        var songArtist = $('<p>');
+//         var songCard = $('<div>');
+//         var songImg = $('<img>');
+//         var songTitle = $('<h3>');
+//         var songArtist = $('<p>');
 
-        var albumCover = idName.song[i].albumCover;
-        // songImg.setAttribute('src', albumCover);
-        songImg.attr('src', albumCover);
-        //songImg.classList.add('');
-        songCard.append(songImg)
+//         var albumCover = idName.song[i].albumCover;
+//         // songImg.setAttribute('src', albumCover);
+//         songImg.attr('src', albumCover);
+//         //songImg.classList.add('');
+//         songCard.append(songImg)
 
-        var title = idName.song[i].name;
-        // songTitle.textContent = title;
-        songTitle.text(title);
-        //songTitle.classList.add('');
-        songCard.append(songTitle);
+//         var title = idName.song[i].name;
+//         // songTitle.textContent = title;
+//         songTitle.text(title);
+//         //songTitle.classList.add('');
+//         songCard.append(songTitle);
 
-        var artistName = idName.song[i].artistName;
-        // songArtist.textContent = artistName;
-        songArtist.text(artistName);
-        //songArtist.classList.add('');
-        songCard.append(songArtist);
+//         var artistName = idName.song[i].artistName;
+//         // songArtist.textContent = artistName;
+//         songArtist.text(artistName);
+//         //songArtist.classList.add('');
+//         songCard.append(songArtist);
 
-        resultsContainer.append(songCard);
-        //songCard.classList.add('');
+//         resultsContainer.append(songCard);
+//         //songCard.classList.add('');
 
-        resultsEl.append(resultsContainer);
-    }
-}
+//         resultsEl.append(resultsContainer);
+//     }
+// }
 
 
 //displays playlists to aside bar and to modal
