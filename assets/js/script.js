@@ -53,17 +53,17 @@ function printSearch(results){
       
             var albumCover = results.data[i].album.cover_medium;
             resultImg.attr('src', albumCover);
-            //resultImg.classList.add('');
+            resultImg.addClass('albumCover');
             resultCard.append(resultImg);
       
             var songTitle = results.data[i].title;
             resultTitle.text(songTitle);
-            //resultTitle.classList.add('');
+            resultTitle.addClass('songTitle');
             resultCard.append(resultTitle);
       
             var artistName = results.data[i].artist.name;
             resultArtist.text(artistName);
-            //resultArtist.classList.add('');
+            resultArtist.addClass('artistName');
             resultCard.append(resultArtist);
 
             addBtn.addClass('add-song modal-trigger');
@@ -72,9 +72,9 @@ function printSearch(results){
             addBtn.attr('data-albumCover', albumCover);
             addBtn.attr('data-target', 'modal1');
             resultCard.append(addBtn);
-      
-            resultsEl.append(resultCard);
             resultCard.addClass('search-result-card');
+            resultsEl.append(resultCard);
+            
             }
         }
 }

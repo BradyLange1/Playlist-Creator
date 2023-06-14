@@ -182,12 +182,13 @@ main{
     justify-content: baseline;
 } */
 
-h3{
-    font-size: 20px
-
+.songTitle{
+    font-size: 20px;
+    margin-left: 10%;
+    margin-top: 10%;
 }
 
-input:-internal-autofill-selected {
+/* input:-internal-autofill-selected {
     appearance: menulist-button;
     background-image: none !important;
     background-color: pink !important;
@@ -199,4 +200,33 @@ input:-webkit-autofill {
     background-image: none !important;
     background-color: pink !important;
     color: fieldtext !important;
+} */
+
+.search-result-card{
+    display:inline;
+    background-color: var(--sectionBack);
+    width: 250px;
+    height: 400px;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+.albumCover{
+    width: 230px;
+    margin-left: 4%;
+    margin-top: 5%;
+    border-radius: 15px;
+}
+/* Add song button */
+.add-song {
+    background-color: var(--search-box);
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    border-color: var(--search-box);
+}
+
+.artistName{
+    margin-left: 10%;
 }
