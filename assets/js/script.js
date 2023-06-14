@@ -127,7 +127,7 @@ function printDataToPage(results){
 //displays playlists to aside bar and to modal
 function displayUserPlaylists(){
     for (i = 0; i < playlists.length; i++){
-        $('#user-playlists').append('<button>' + playlists[i].name + '</button>')
+        $('#user-playlists').append('<button class=user-playlist>' + playlists[i].name + '</button>')
         $('#playlists-modal').append('<button class=playlist-selected>' + playlists[i].name + '</button>')
     }
 }
@@ -153,7 +153,8 @@ $('#playlists-modal').on('click', '.playlist-selected', function(){
 })
 
 function addPlaylist(input){
-    $("#user-playlists").append("<button class = user-playlist>" + input)
+    $("#user-playlists").append("<button class=user-playlist>" + input)
+    $('#playlists-modal').append('<button class=playlist-selected>' + input + '</button>')
 }
 // function addPlaylist(input){
 //     $("#user-playlists").append("<button class = user-playlist>" + input)
