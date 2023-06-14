@@ -186,3 +186,17 @@ h3{
     font-size: 20px
 
 }
+
+input:-internal-autofill-selected {
+    appearance: menulist-button;
+    background-image: none !important;
+    background-color: pink !important;
+    color: fieldtext !important;
+}
+
+input:-webkit-autofill {
+    appearance: menulist-button;
+    background-image: none !important;
+    background-color: pink !important;
+    color: fieldtext !important;
+}
