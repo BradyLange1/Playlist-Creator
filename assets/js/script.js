@@ -68,11 +68,12 @@ function printSearch(results){
             resultArtist.addClass('artistName');
             resultCard.append(resultArtist);
             resultCard.append(audioTag)
+
             audioTag.attr('src', results.data[i].preview)
             audioTag.attr('type', "audio/mpeg")
             audioTag.append(audioPreview)
             audioTag.addClass("audioPreview")    
-            /////////////Marjan Added class for audioRag///////////
+            /////////////Marjan Added class for audioTag///////////
 
             addBtn.addClass('add-song modal-trigger');
             addBtn.attr('data-title', songTitle);
@@ -89,8 +90,8 @@ function printSearch(results){
 }
 
 //listens for which playlist button gets clicked for printing to page
-$('#user-playlists').on('click', '.user-playlist', function(){
-    var playlistSelected = $(this).text();
+$('#user-playlists').on('click', '.open-playlist-btn', function(){
+    var playlistSelected = $(this).parent().text();
     var playlistSelectedObject = playlists.find((x) => x.name == playlistSelected);
 
     printPlaylist(playlistSelectedObject);
@@ -115,29 +116,30 @@ function printPlaylist(playlistObject){
 
         var audioMP3 = playlistObject.songs[i].audioPreview
         var albumCover = playlistObject.songs[i].albumCover;
+
         songImg.attr('src', albumCover);
-        //songImg.addClass('');
+        songImg.addClass('songImg');
         songCard.append(songImg)
 
         var title = playlistObject.songs[i].name;
         songTitle.text(title);
-        //songTitle.addClass('');
+        songTitle.addClass('songTitle');
         songCard.append(songTitle);
 
         var artistName = playlistObject.songs[i].artistName;
         songArtist.text(artistName);
-        //songArtist.addClass('');
+        songArtist.addClass('songArtist');
         songCard.append(songArtist);
 
-        resultsContainer.append(songCard);
-        //songCard.addClass('');
-
-        resultsEl.append(resultsContainer);
-
-        songCard.append(audioTag)
         audioTag.attr('src', audioMP3)
         audioTag.attr('type', "audio/mpeg")
         audioTag.append(audioPreview)
+        songCard.append(audioTag)
+
+        songCard.addClass('songCard');
+        resultsContainer.append(songCard);
+
+        resultsEl.append(resultsContainer);
     }
 }
 
@@ -183,7 +185,13 @@ $('#playlists-modal').on('click', '.playlist-selected', function(){
 
 //creates a new playlist
 function addPlaylist(input){
-    $("#user-playlists").append("<button class=user-playlist>" + input)
+    var userPlaylist = $('<div>');
+
+    userPlaylist.text(playlists[i].name);
+    userPlaylist.append('<button class=open-playlist-btn></button>');
+    userPlaylist.append('<button class=delete-playlist-btn></button>');
+    $('#user-playlists').append(userPlaylist);
+
     $('#playlists-modal').append('<button class=playlist-selected>' + input + '</button>')
 }
 
