@@ -68,10 +68,10 @@ function printDataToPage(results){
                 addBtn.setAttribute('data-target', 'modal1')
                 resultCard.append(addBtn);
       
-                resultsContainer.append(resultCard);
-                //resultCard.classList.add('');
+                resultsEl.append(resultCard);
+                resultCard.classList.add('search-result-card');
       
-                resultsEl.append(resultsContainer);
+                // resultsEl.append(resultsContainer);
       
                 // console.log("this is the cover", resultImg);
                 // console.log("this is the song", resultTitle);
