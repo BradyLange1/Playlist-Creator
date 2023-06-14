@@ -13,6 +13,7 @@ if (playlists === null){
     playlists = []
 }
 
+//rapidAPI credentials
 const options = {
 	method: 'GET',
 	headers: {
@@ -21,6 +22,7 @@ const options = {
 	}
 };
 
+//Deezer fetch request
 function getInfo(input) {
     const artistUrl = 'https://deezerdevs-deezer.p.rapidapi.com/search?q=' + input;
     fetch(artistUrl, options)
@@ -33,6 +35,7 @@ function getInfo(input) {
         })
 }
 
+//prints search results to results container
 function printSearch(results){
     resultsEl.html("");
 
@@ -41,11 +44,6 @@ function printSearch(results){
         return;
     } else {
         for (var i = 0; i < results.data.length; i++) {
-            // var resultCard = document.createElement('div');
-            // var resultImg = document.createElement('img');
-            // var resultTitle = document.createElement('h3');
-            // var resultArtist = document.createElement('p');
-            // var addBtn = document.createElement('button');
 
             var resultCard = $('<div>');
             var resultImg = $('<img>');
@@ -54,28 +52,20 @@ function printSearch(results){
             var addBtn = $('<button>');
       
             var albumCover = results.data[i].album.cover_medium;
-            // resultImg.setAttribute('src', albumCover);
             resultImg.attr('src', albumCover);
             //resultImg.classList.add('');
             resultCard.append(resultImg);
       
             var songTitle = results.data[i].title;
-            // resultTitle.textContent = songTitle;
             resultTitle.text(songTitle);
             //resultTitle.classList.add('');
             resultCard.append(resultTitle);
       
             var artistName = results.data[i].artist.name;
-            // resultArtist.textContent = artistName;
             resultArtist.text(artistName);
             //resultArtist.classList.add('');
             resultCard.append(resultArtist);
 
-            // addBtn.classList.add('add-song', 'btn', 'modal-trigger');
-            // addBtn.setAttribute('data-title', songTitle);
-            // addBtn.setAttribute('data-artist', artistName);
-            // addBtn.setAttribute('data-albumCover', albumCover);
-            // addBtn.setAttribute('data-target', 'modal1');
             addBtn.addClass('add-song modal-trigger');
             addBtn.attr('data-title', songTitle);
             addBtn.attr('data-artist', artistName);
@@ -85,68 +75,54 @@ function printSearch(results){
       
             resultsEl.append(resultCard);
             resultCard.addClass('search-result-card');
-      
-            // resultsEl.append(resultsContainer);
-      
-            // console.log("this is the cover", resultImg);
-            // console.log("this is the song", resultTitle);
-            // console.log("this is the artist", resultArtist);
             }
         }
 }
 
-// $('#user-playlists').on('click', '.user-playlist', function(){
-//     var playlistSelected = $(this).text();
-//     var playlistSelectedObject = playlists.find((x) => x.name == playlistSelected);
+//listens for which playlist button gets clicked for printing to page
+$('#user-playlists').on('click', '.user-playlist', function(){
+    var playlistSelected = $(this).text();
+    var playlistSelectedObject = playlists.find((x) => x.name == playlistSelected);
 
-//     printPlaylist();
-// })
+    printPlaylist(playlistSelectedObject);
+})
 
-// function printPlaylist(){
-//     resultsEl.html("");
-//     //retrieve from local storage based on unique id, localStorage.getItem();
-//     //parse stringified object
+//prints playlist to results container
+function printPlaylist(playlistObject){
+    resultsEl.html("");
 
-//     var resultsContainer = $('<div>');
-//     var playlistTitle = idName;
-//     resultsContainer.append(playlistTitle);
+    var resultsContainer = $('<div>');
+    var playlistTitle = playlistObject.name;
+    resultsContainer.append(playlistTitle);
 
-//     for (var i = 0; i < playlistSelected.length; i++) {
-//         // var resultsContainer = document.createElement('div');
-//         // var songCard = document.createElement('div');
-//         // var songImg = document.createElement('img');
-//         // var songTitle = document.createElement('h3');
-//         // var songArtist = document.createElement('p');
+    for (var i = 0; i < playlistObject.songs.length; i++) {
 
-//         var songCard = $('<div>');
-//         var songImg = $('<img>');
-//         var songTitle = $('<h3>');
-//         var songArtist = $('<p>');
+        var songCard = $('<div>');
+        var songImg = $('<img>');
+        var songTitle = $('<h3>');
+        var songArtist = $('<p>');
 
-//         var albumCover = idName.song[i].albumCover;
-//         // songImg.setAttribute('src', albumCover);
-//         songImg.attr('src', albumCover);
-//         //songImg.classList.add('');
-//         songCard.append(songImg)
+        var albumCover = playlistObject.songs[i].albumCover;
+        songImg.attr('src', albumCover);
+        //songImg.classList.add('');
+        songCard.append(songImg)
 
-//         var title = idName.song[i].name;
-//         // songTitle.textContent = title;
-//         songTitle.text(title);
-//         //songTitle.classList.add('');
-//         songCard.append(songTitle);
+        var title = playlistObject.songs[i].name;
+        songTitle.text(title);
+        //songTitle.classList.add('');
+        songCard.append(songTitle);
 
-//         var artistName = idName.song[i].artistName;
-//         // songArtist.textContent = artistName;
-//         songArtist.text(artistName);
-//         //songArtist.classList.add('');
-//         songCard.append(songArtist);
+        var artistName = playlistObject.songs[i].artistName;
+        songArtist.text(artistName);
+        //songArtist.classList.add('');
+        songCard.append(songArtist);
 
-//         resultsContainer.append(songCard);
-//         //songCard.classList.add('');
+        resultsContainer.append(songCard);
+        //songCard.classList.add('');
 
-//         resultsEl.append(resultsContainer);
-//     }
-// }
+        resultsEl.append(resultsContainer);
+    }
+}
 
 
 //displays playlists to aside bar and to modal
@@ -156,8 +132,10 @@ function displayUserPlaylists(){
         $('#playlists-modal').append('<button class=playlist-selected>' + playlists[i].name + '</button>')
     }
 }
+
 displayUserPlaylists()
 
+//listens for which song to add to a playlist
 $('#results').on('click', ".add-song", function(){
     var title = $(this).attr("data-title")
     var artist = $(this).attr("data-artist")
@@ -169,6 +147,7 @@ $('#results').on('click', ".add-song", function(){
     }
 })
 
+//listens for which playlist to add the song to
 $('#playlists-modal').on('click', '.playlist-selected', function(){
     var playlistSelected = $(this).text()
     var playlistSelectedObject = playlists.find((x) => x.name == playlistSelected)
@@ -177,14 +156,11 @@ $('#playlists-modal').on('click', '.playlist-selected', function(){
     localStorage.setItem("userPlaylists", JSON.stringify(playlists))
 })
 
+//creates a new playlist
 function addPlaylist(input){
     $("#user-playlists").append("<button class=user-playlist>" + input)
     $('#playlists-modal').append('<button class=playlist-selected>' + input + '</button>')
 }
-// function addPlaylist(input){
-//     $("#user-playlists").append("<button class = user-playlist>" + input)
-
-// }
 
 // Entry validation 
 function validateForm(event) {
@@ -198,11 +174,7 @@ function validateForm(event) {
 
 searchFormEl.on('submit', validateForm)
 
-// Adds song to playlist
-// addSong.on("click", function(event){
-//     playlists.push()
-// })
-
+//listens for creating a new playlist
 addPlaylistButtonEl.on('click', function(){
     var userInput = playlistNameEl.val()
     var userPlaylist = {
@@ -234,11 +206,3 @@ searchButtonEl.on('click', function () {
     var userInput = userInputEl.val()
     getInfo(userInput)
 })
-
-
-// fetch data based on search input
-// populate data on page
-
-// .playlist-card
-// .playlist-img
-// .playlist-title
