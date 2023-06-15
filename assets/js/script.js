@@ -90,7 +90,8 @@ function printSearch(results){
 
 //listens for which playlist button gets clicked for printing to page
 $('#user-playlists').on('click', '.user-playlist', function(){
-    var playlistSelected = $(this).text();
+    var playlistSelected = $(this).prev().text();
+    console.log(playlistSelected)
     var playlistSelectedObject = playlists.find((x) => x.name == playlistSelected);
 
     printPlaylist(playlistSelectedObject);
@@ -98,6 +99,7 @@ $('#user-playlists').on('click', '.user-playlist', function(){
 
 //prints playlist to results container
 function printPlaylist(playlistObject){
+    console.log(playlistObject)
     resultsEl.html("");
 
     var resultsContainer = $('<div>');
@@ -145,11 +147,11 @@ function printPlaylist(playlistObject){
 //displays playlists to aside bar and to modal
 function displayUserPlaylists(){
     for (i = 0; i < playlists.length; i++){
-        var userPlaylist = $('<div>');
+        var userPlaylist = $('<div class=playlist-list>');
 
-        userPlaylist.text(playlists[i].name);
-        userPlaylist.append('<button class=open-playlist-btn></button>');
-        userPlaylist.append('<button class=delete-playlist-btn></button>');
+        userPlaylist.append('<h4>' + playlists[i].name);
+        userPlaylist.append('<button class=user-playlist>Select</button>');
+        userPlaylist.append('<button class=delete-playlist-btn>Delete</button>');
         $('#user-playlists').append(userPlaylist);
 
         $('#playlists-modal').append('<button class=playlist-selected>' + playlists[i].name + '</button>')

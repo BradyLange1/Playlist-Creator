@@ -156,9 +156,21 @@ main{
     align-items: center;
 }
 
+.playlist-list{
+    display: flex;
+    justify-content: space-between;
+}
+
 .user-playlist{
     margin-bottom: 5px;
     padding: 5px;
+    width: 100px;
+}
+
+.delete-playlist-btn{
+    margin-bottom: 5px;
+    padding: 5px;
+    width: 80px;
 }
 
 #user-playlists{
@@ -261,4 +273,3 @@ input:-webkit-autofill {
     margin-bottom: -50%;
     
 }
-
