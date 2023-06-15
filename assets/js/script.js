@@ -72,7 +72,7 @@ function printSearch(results){
             audioTag.attr('type', "audio/mpeg")
             audioTag.append(audioPreview)
             audioTag.addClass("audioPreview")    
-            /////////////Marjan Added class for audioRag///////////
+           
 
             addBtn.addClass('add-song modal-trigger');
             addBtn.attr('data-title', songTitle);
