@@ -156,9 +156,14 @@ main{
 } */
 
 
-.user-playlist{
-    margin-bottom: 5px;
-    padding: 5px;
+.playlist-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-playlist-name{
+    margin: 10px;
 }
 
 #user-playlists{
@@ -166,7 +171,7 @@ main{
     flex-direction: column;
 }
 
-.open-playlist-btn{
+.user-playlist{
     background-image: url(../Images/playlist\ \(1\).svg);
     width: 40px;
     height: 40px;
@@ -183,9 +188,10 @@ main{
     background-image: url(../Images/delet-btn\ \(2\).svg);
     height: 18px;
     width: 18px;
-    float:right;
+    float: right;
     border: 0px;
     background-position: center;
+    cursor: pointer;
     background-size: 90%;
     margin: 5px;
 }
