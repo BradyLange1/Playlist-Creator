@@ -149,8 +149,8 @@ function displayUserPlaylists(){
     for (i = 0; i < playlists.length; i++){
         var userPlaylist = $('<div class=playlist-list>');
 
-        userPlaylist.append('<h4 class=user-playlist-name>' + playlists[i].name);
         userPlaylist.append('<button class=user-playlist></button>');
+        userPlaylist.append('<p class=user-playlist-name>' + playlists[i].name);
         userPlaylist.append('<button class=delete-playlist-btn></button>');
         $('#user-playlists').append(userPlaylist);
 
