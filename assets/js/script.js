@@ -72,7 +72,7 @@ function printSearch(results){
             audioTag.attr('type', "audio/mpeg")
             audioTag.append(audioPreview)
             audioTag.addClass("audioPreview")    
-            /////////////Marjan Added class for audioRag///////////
+           
 
             addBtn.addClass('add-song modal-trigger');
             addBtn.attr('data-title', songTitle);
@@ -149,9 +149,9 @@ function displayUserPlaylists(){
     for (i = 0; i < playlists.length; i++){
         var userPlaylist = $('<div class=playlist-list>');
 
-        userPlaylist.append('<h4>' + playlists[i].name);
-        userPlaylist.append('<button class=user-playlist>Select</button>');
-        userPlaylist.append('<button class=delete-playlist-btn>Delete</button>');
+        userPlaylist.append('<h4 class=user-playlist-name>' + playlists[i].name);
+        userPlaylist.append('<button class=user-playlist></button>');
+        userPlaylist.append('<button class=delete-playlist-btn></button>');
         $('#user-playlists').append(userPlaylist);
 
         $('#playlists-modal').append('<button class=playlist-selected>' + playlists[i].name + '</button>')
