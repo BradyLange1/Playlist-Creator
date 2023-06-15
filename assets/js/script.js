@@ -99,6 +99,7 @@ $('#user-playlists').on('click', '.open-playlist-btn', function(){
 
 //prints playlist to results container
 function printPlaylist(playlistObject){
+    console.log(playlistObject)
     resultsEl.html("");
 
     var resultsContainer = $('<div>');
@@ -148,11 +149,13 @@ function printPlaylist(playlistObject){
 
 //displays playlists to aside bar and to modal
 function displayUserPlaylists(){
+    $('#playlists-modal').html('')
+    $('#user-playlists').html('')
     for (i = 0; i < playlists.length; i++){
-        var userPlaylist = $('<div>');
+        var userPlaylist = $('<div class=playlist-list>');
 
-        userPlaylist.text(playlists[i].name);
-        userPlaylist.append('<button class=open-playlist-btn></button>');
+        userPlaylist.append('<h4 class=user-playlist-name>' + playlists[i].name);
+        userPlaylist.append('<button class=user-playlist></button>');
         userPlaylist.append('<button class=delete-playlist-btn></button>');
         $('#user-playlists').append(userPlaylist);
 
@@ -187,10 +190,10 @@ $('#playlists-modal').on('click', '.playlist-selected', function(){
 
 //creates a new playlist
 function addPlaylist(input){
-    var userPlaylist = $('<div>');
+    var userPlaylist = $('<div class=playlist-list>');
 
-    userPlaylist.text(playlists[i].name);
-    userPlaylist.append('<button class=open-playlist-btn></button>');
+    userPlaylist.append('<h4 class=user-playlist-name>' + input);
+    userPlaylist.append('<button class=user-playlist></button>');
     userPlaylist.append('<button class=delete-playlist-btn></button>');
     $('#user-playlists').append(userPlaylist);
 
@@ -221,6 +224,16 @@ addPlaylistButtonEl.on('click', function(){
     addPlaylist(userInput)
 })
 
+//listens for deleting a playlist
+$('#user-playlists').on('click', '.delete-playlist-btn', function(){
+    var selectedPlaylist = $(this).prev().prev().text()
+    console.log(selectedPlaylist)
+    selectedPlaylistIndex = playlists.findIndex((x) => x.name == selectedPlaylist)
+    playlists.splice(selectedPlaylistIndex, 1)
+    console.log(playlists)
+    localStorage.setItem("userPlaylists", JSON.stringify(playlists))
+    displayUserPlaylists()
+})
 
 // Get the input field
 
