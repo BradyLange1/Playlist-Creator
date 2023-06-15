@@ -183,7 +183,13 @@ $('#playlists-modal').on('click', '.playlist-selected', function(){
 
 //creates a new playlist
 function addPlaylist(input){
-    $("#user-playlists").append("<button class=user-playlist>" + input)
+    var userPlaylist = $('<div>');
+
+    userPlaylist.text(input);
+    userPlaylist.append('<button class=open-playlist-btn></button>');
+    userPlaylist.append('<button class=delete-playlist-btn></button>');
+    $('#user-playlists').append(userPlaylist);
+
     $('#playlists-modal').append('<button class=playlist-selected>' + input + '</button>')
 }
 
