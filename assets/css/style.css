@@ -158,12 +158,21 @@ main{
 
 .playlist-list{
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
+}
+.playlist-list:hover{
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    background-color: var(--sectionBackHover);
+    border-radius: 5px;
+    
 }
 
 .user-playlist-name{
     margin: 10px;
+    width: 280px;
 }
 
 #user-playlists{
@@ -194,6 +203,7 @@ main{
     cursor: pointer;
     background-size: 90%;
     margin: 5px;
+    margin-right: 10px;
 }
 
 .results-container{
