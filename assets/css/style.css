@@ -95,6 +95,12 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     margin-right: 10px;
 }
 
+.home-icon{
+    width: 23px;
+    margin-top:-6px;
+    margin-right: 4px;
+}
+
 .icon{
     float: right;
     border: 0;
@@ -102,12 +108,6 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     height: 35px;
     background: transparent;
     cursor: pointer;
-}
-
-.home-icon{
-    width: 23px;
-    margin-top:-6px;
-    margin-right: 4px;
 }
 
 main{
@@ -125,16 +125,14 @@ main{
 }
 
 .aside-bar{
-     flex: 0 0 200px;
      background-color: var(--sectionBack);
      padding: 20px;
-     /* width: 20vw; */
+     width: 250px;
      border-radius: 15px;
      border-radius: 20px;
      margin-right: 30px;
     
 }
-
 
 .aside-button{
     width: 40px;
@@ -160,13 +158,13 @@ main{
     /* justify-content: space-between; */
     align-items: center;
 }
+
 .playlist-list:hover{
     display: flex;
     /* justify-content: space-between; */
     align-items: center;
     background-color: var(--sectionBackHover);
     border-radius: 5px;
-    
 }
 
 .user-playlist-name{
@@ -182,7 +180,7 @@ main{
 .user-playlist{
     background-image: url(../Images/playlist\ \(1\).svg);
     width: 40px;
-    height: 40px;
+    height: 28px;
     float: left;
     border: 0px;
     border-radius: 15px;
@@ -194,8 +192,8 @@ main{
 
 .delete-playlist-btn{
     background-image: url(../Images/delet-btn\ \(2\).svg);
-    height: 18px;
-    width: 18px;
+    height: 15px;
+    width: 17px;
     float: right;
     border: 0px;
     background-position: center;
@@ -439,9 +437,38 @@ input:-webkit-autofill {
         margin-left: 34%;
         margin-top: 50px;
     } */
+
     /* .artistName{
         margin-top: 3%;
         margin-bottom: -50%;
     } */ 
   }
 
+  @media screen and (max-width: 425px) {
+    html{
+        background-color: var(--background);
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .logo{
+        border-color: solid var(--background);
+        /* display: inline-block; */
+        /* justify-content: space-between; */
+    }
+
+    .home-icon{
+        width: 23px;
+        margin-top:-6px;
+        margin-right: 4px;
+    }
+    
+    .icon{
+        float: right;
+        border: 0;
+        width: 30px;
+        height: 35px;
+        background: transparent;
+        cursor: pointer;
+    }
+  }
