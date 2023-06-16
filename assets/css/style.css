@@ -16,8 +16,8 @@
 
 html{
     background-color: var(--background);
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 30px;
+    margin-right: 30px;
     color: var(--active-text);
     /* background-image:url(../Images/Home\ Page\ \(1\).svg); */
     background-position: right;
@@ -113,6 +113,7 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 main{
     display: flex;
     flex-wrap: wrap;
+    width: 90vw;
 }
 
 .cards{
@@ -356,6 +357,8 @@ input:-webkit-autofill {
       align-items: center;
         margin-bottom: 20px;
     }
+
+
     /* .search-result-card{
         display:inline;
         background-color: var(--sectionBack);
