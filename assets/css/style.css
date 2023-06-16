@@ -14,6 +14,10 @@
     font-size: 18px;
 }
 
+p{
+    margin: 10px
+}
+
 html{
     background-color: var(--background);
     margin-left: 60px;
@@ -106,9 +110,10 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 
 .home-icon{
     width: 23px;
-    margin-top:-6px;
     margin-right: 4px;
 }
+
+
 
 main{
     display: flex;
@@ -134,6 +139,18 @@ main{
     
 }
 
+.hover{
+    display: flex;
+    align-items: center;
+}
+
+.hover:hover{
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    background-color: var(--sectionBackHover);
+    border-radius: 5px;
+}
 
 .aside-button{
     width: 40px;
@@ -170,6 +187,11 @@ main{
 
 .user-playlist-name{
     margin: 10px;
+    width: 280px;
+}
+
+#playlist-name{
+    margin-left: 10px;
     width: 280px;
 }
 
@@ -355,6 +377,7 @@ input:-webkit-autofill {
     .header-parents{
       flex-direction: column;
       align-items: center;
+      margin: 1px
     }
 
     .logo-container{
