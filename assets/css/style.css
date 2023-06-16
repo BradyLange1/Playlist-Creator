@@ -49,9 +49,16 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 
 .logo{
     border-color: solid var(--background);
-    display: inline-block;
     margin-left: 20px;
     justify-content: space-between;
+}
+
+.main-logo{
+    display: inline-block;
+}
+
+.mobile-logo{
+    display: none;
 }
 
 .search-bar{
@@ -98,12 +105,6 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     margin-right: 10px;
 }
 
-.home-icon{
-    width: 23px;
-    margin-top:-6px;
-    margin-right: 4px;
-}
-
 .icon{
     float: right;
     border: 0;
@@ -111,11 +112,23 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     height: 35px;
     background: transparent;
     cursor: pointer;
+    margin-top: 3px;
+    margin-right: -3px;
 }
 
 .home-icon{
     width: 23px;
-    margin-right: 4px;
+    margin-top: -2px;
+    margin-right: 2px;
+}
+
+.aside-bar{
+    background-color: var(--sectionBack);
+    padding: 20px;
+    width: 250px;
+    border-radius: 15px;
+    border-radius: 20px;
+    margin-right: 30px;
 }
 
 main{
@@ -129,16 +142,6 @@ main{
     padding: 20px;
     height: 700px;
     /* background-color: var(--sectionBack); */
-    
-}
-
-.aside-bar{
-     background-color: var(--sectionBack);
-     padding: 20px;
-     width: 250px;
-     border-radius: 15px;
-     border-radius: 20px;
-     margin-right: 30px;
     
 }
 
@@ -376,101 +379,6 @@ input:-webkit-autofill {
 }
 
 @media screen and (max-width: 768px) {
-    .header-parents{
-      flex-direction: column;
-      align-items: center;
-      margin: 1px
-    }
-
-    .logo-container{
-        margin-left: 60%;
-    }
-
-    .search-bar{
-      flex-direction: column;
-      align-items: center;
-        margin-bottom: 20px;
-    }
-
-
-    /* .search-result-card{
-        display:inline;
-        background-color: var(--sectionBack);
-        width: 130%;
-        height: 80px;
-        align-items: center;
-        margin-bottom: 20px;
-        border-radius: 20px;
-        margin-top:20px ;
-    }
-    
-    .search-result-card:hover{
-        display:inline;
-        background-color: var(--sectionBackHover);
-        width: 130%;
-        height: 80px;
-        align-items: center;
-        margin-bottom: 20px;
-        border-radius: 20px;
-        margin-top:20px ;
-    }
-
-    .albumCover{
-        width: 70px;
-        margin-left: 2%;
-        margin-top: 1.5%;
-        border-radius: 15px;
-    }
-    .songTitle{
-        font-size: 15px;
-        margin-top: -20%;
-        margin-left: 25%;
-    } */
-    
-    /* Add song button */
-    /* .add-song {
-        background-image:url(../Images/add-btn.svg);
-        border-radius: 50px;
-        width: 30px;
-        height: 30px;
-        border-color: none;
-        margin-top: 19%;
-        margin-left: 90%;
-        background-size: 100%;
-       
-    }
-    
-    .add-song:hover {
-        background-image:url(../Images/add-btn-hover.svg);
-        border-radius: 50px;
-        width: 35px;
-        height: 35px;
-        border-color: none;
-        margin-top: 19%;
-        margin-left: 90%;
-        background-size: 100%;
-       
-    }
-    
-    .artistName{
-        margin-left: 25%;
-        font-size: 14px;
-    }
-    
-    /* .audioPreview{
-        width: 230px;
-        height: 30px;
-        margin-left: 34%;
-        margin-top: 50px;
-    } */
-
-    /* .artistName{
-        margin-top: 3%;
-        margin-bottom: -50%;
-    } */ 
-  }
-
-  @media screen and (max-width: 426px) {
     html{
         background-color: var(--background);
         margin-left: 15px;
@@ -478,7 +386,8 @@ input:-webkit-autofill {
     }
 
     .header-parents{
-        /* flex-direction: column; */
+        flex-direction: column;
+        margin: 1px;
         align-items: flex-start;
         margin: 1px
       }
@@ -494,18 +403,29 @@ input:-webkit-autofill {
         margin-left: -10px;
     }
 
-    .home-icon{
-        width: 23px;
-        margin-top:-6px;
-        margin-right: 4px;
+    .main-logo{
+        display: none;
     }
     
-    .icon{
-        float: right;
-        border: 0;
-        width: 30px;
-        height: 35px;
-        background: transparent;
-        cursor: pointer;
+    .mobile-logo{
+        display: inline-block;
     }
-  }
+
+    .search-bar{
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .aside-bar{
+        /* background-color: var(--sectionBack);
+        padding: 20px;
+        width: 250px;
+        border-radius: 15px;
+        border-radius: 20px;
+        margin-right: 30px; */
+    }
+}
+
+@media screen and (max-width: 426px) {
+}
