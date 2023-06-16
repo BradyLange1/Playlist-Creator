@@ -90,7 +90,7 @@ function printSearch(results){
 }
 
 //listens for which playlist button gets clicked for printing to page
-$('#user-playlists').on('click', '.open-playlist-btn', function(){
+$('#user-playlists').on('click', '.user-playlist', function(){
     var playlistSelected = $(this).parent().text();
     var playlistSelectedObject = playlists.find((x) => x.name == playlistSelected);
 
@@ -113,6 +113,7 @@ function printPlaylist(playlistObject){
         var songImg = $('<img>');
         var songTitle = $('<h3>');
         var songArtist = $('<p>');
+        var deleteBtn = $('<button>');
         var audioTag = $('<audio controls>')
         var audioPreview = $('source')
 
@@ -138,6 +139,9 @@ function printPlaylist(playlistObject){
         audioTag.addClass("audioPreviewPlaylist")
         audioTag.append(audioPreview)
         songCard.append(audioTag)
+
+        deleteBtn.addClass('delete-song');
+        songCard.append(deleteBtn);
 
         songCard.addClass('songCard');
         resultsContainer.append(songCard);
