@@ -55,24 +55,25 @@ function printSearch(results){
       
             var albumCover = results.data[i].album.cover_medium;
             resultImg.attr('src', albumCover);
-            resultImg.addClass('albumCover');
+            resultImg.addClass('resultImg');
             resultCard.append(resultImg);
       
             var songTitle = results.data[i].title;
             resultTitle.text(songTitle);
-            resultTitle.addClass('songTitle');
+            resultTitle.addClass('resultTitle');
             resultCard.append(resultTitle);
       
             var artistName = results.data[i].artist.name;
             resultArtist.text(artistName);
-            resultArtist.addClass('artistName');
+            resultArtist.addClass('resultArtist');
             resultCard.append(resultArtist);
             resultCard.append(audioTag)
+
             audioTag.attr('src', results.data[i].preview)
             audioTag.attr('type', "audio/mpeg")
-            audioTag.append(audioPreview)
-            audioTag.addClass("audioPreview")    
-           
+            audioTag.addClass("audioPreviewSearch") 
+            audioTag.append(audioPreview)   
+            /////////////Marjan Added class for audioTag///////////
 
             addBtn.addClass('add-song modal-trigger');
             addBtn.attr('data-title', songTitle);
@@ -90,8 +91,7 @@ function printSearch(results){
 
 //listens for which playlist button gets clicked for printing to page
 $('#user-playlists').on('click', '.user-playlist', function(){
-    var playlistSelected = $(this).prev().text();
-    console.log(playlistSelected)
+    var playlistSelected = $(this).parent().text();
     var playlistSelectedObject = playlists.find((x) => x.name == playlistSelected);
 
     printPlaylist(playlistSelectedObject);
@@ -103,7 +103,8 @@ function printPlaylist(playlistObject){
     resultsEl.html("");
 
     var resultsContainer = $('<div>');
-    var playlistTitle = playlistObject.name;
+    var playlistTitle = $('<h2>' + playlistObject.name + '<h2>');
+    playlistTitle.addClass('playlistTitle');
     resultsContainer.append(playlistTitle);
 
     for (var i = 0; i < playlistObject.songs.length; i++) {
@@ -112,34 +113,40 @@ function printPlaylist(playlistObject){
         var songImg = $('<img>');
         var songTitle = $('<h3>');
         var songArtist = $('<p>');
+        var deleteBtn = $('<button>');
         var audioTag = $('<audio controls>')
         var audioPreview = $('source')
 
         var audioMP3 = playlistObject.songs[i].audioPreview
         var albumCover = playlistObject.songs[i].albumCover;
+
         songImg.attr('src', albumCover);
-        //songImg.addClass('');
+        songImg.addClass('songImg');
         songCard.append(songImg)
 
         var title = playlistObject.songs[i].name;
         songTitle.text(title);
-        //songTitle.addClass('');
+        songTitle.addClass('songTitle');
         songCard.append(songTitle);
 
         var artistName = playlistObject.songs[i].artistName;
         songArtist.text(artistName);
-        //songArtist.addClass('');
+        songArtist.addClass('songArtist');
         songCard.append(songArtist);
 
-        resultsContainer.append(songCard);
-        //songCard.addClass('');
-
-        resultsEl.append(resultsContainer);
-
-        songCard.append(audioTag)
         audioTag.attr('src', audioMP3)
         audioTag.attr('type', "audio/mpeg")
+        audioTag.addClass("audioPreviewPlaylist")
         audioTag.append(audioPreview)
+        songCard.append(audioTag)
+
+        deleteBtn.addClass('delete-song');
+        songCard.append(deleteBtn);
+
+        songCard.addClass('songCard');
+        resultsContainer.append(songCard);
+
+        resultsEl.append(resultsContainer);
     }
 }
 
