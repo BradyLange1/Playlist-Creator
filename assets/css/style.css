@@ -113,8 +113,6 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     margin-right: 4px;
 }
 
-
-
 main{
     display: flex;
     flex-wrap: wrap;
@@ -328,14 +326,21 @@ input:-webkit-autofill {
 /* .playlistTitle{} */
 
 .songCard{
-    display:block;
-    flex: 1 0 1000px;
-    background-color: var(--sectionBack);
-    /* width: 70vw; */
-    height: 20vh;
+      display:inline;
+    background-color: pink;
+    width: 250px;
+    height: 400px;
     align-items: center;
     margin-bottom: 20px;
     border-radius: 20px;
+      /* display:block;
+    flex: 1 0 1000px;
+    background-color: var(--sectionBack);
+    width: 70vw; 
+    height: 20vh;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 20px; */
 }
 
 .songImg{

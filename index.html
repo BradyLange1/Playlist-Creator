@@ -59,6 +59,8 @@
         <div class="results-container">
             <div id="results"  class="results">
             </div>
+            <h3 class="day-message"></h3>
+            <span class="date"></span>
         </div>
 
           <!-- Modal Structure -->
@@ -100,8 +102,9 @@
         </aside> -->
 
         <!-- playlist section, new cards added programatically -->
-        <div class="playlist-card">
-            <img src="" alt="">
+        <!-- <div class="results-container"></div> -->
+            <div class="playlist-card">
+                <img src="" alt="">
 
             <!-- search results, added programatically -->
             <div class="results-container" id="search-container"></div>
@@ -121,8 +124,10 @@
 
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="assets/js/script.js"></script>
+    <script src="./assets/js/homePage.js"></script>
     <script>
         $(document).ready(function(){
             $('.modal').modal();
