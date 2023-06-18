@@ -297,3 +297,53 @@ function getAndSetTopTracks() {
 };
 
 //prints top tracks to dashboard container
+function printTopTracks(topTracks){
+    topTracksE1.html("");
+
+    if (topTracks.data.length === 0) {
+        topTracksContainer.text('No top tracks found.');
+        return;
+    } else {
+        for (var i = 0; i < 5; i++) {
+
+            var topTracksCard = $('<div>');
+            var topTracksImg = $('<img>');
+            var topTracksTitle = $('<h3>');
+            var topTracksArtist = $('<p>');
+            var addBtn = $('<button>');
+            var audioTag = $('<audio controls>')
+            var audioPreview = $('source')
+      
+            var albumCover = topTracks.data[i].album.cover_medium;
+            topTracksImg.attr('src', albumCover);
+            topTracksImg.addClass('topTracksImg');
+            topTracksCard.append(topTracksImg);
+      
+            var topTracksTitle = topTracks.data[i].title;
+            topTracksTitle.text(topTracksTitle);
+            topTracksTitle.addClass('topTracksTitle');
+            topTracksCard.append(topTracksTitle);
+      
+            var artistName = topTracks.data[i].artist.name;
+            topTracksArtist.text(artistName);
+            topTracksArtist.addClass('topTracksArtist');
+            topTracksCard.append(topTracksArtist);
+            topTracksCard.append(audioTag)
+
+            audioTag.attr('src', topTrackss.data[i].preview)
+            audioTag.attr('type', "audio/mpeg")
+            audioTag.addClass("audioPreviewSearch") 
+            audioTag.append(audioPreview)   
+            addBtn.addClass('add-song modal-trigger');
+            addBtn.attr('data-title', topTracksTitle);
+            addBtn.attr('data-artist', artistName);
+            addBtn.attr('data-albumCover', albumCover);
+            addBtn.attr('data-target', 'modal1');
+            addBtn.attr('data-audio', topTrackss.data[i].preview)
+            resultCard.append(addBtn);
+      
+            topTracksCard.addClass('topTracks-card');
+            topTracksE1.append(topTracksCard);
+            }
+        }
+}
