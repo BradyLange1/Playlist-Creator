@@ -5,6 +5,10 @@ var resultsEl = $('#results');
 var addPlaylistButtonEl = $('#create-playlist');
 var playlistNameEl = $('#playlist-name');
 var searchFormEl = $('#search-form');
+var topTracksE1 = $("#topTracks")
+var topTracksContainer =$(".topTracks-container")
+
+const topTracksAPIkey = "3558c7712e3053b9f8860b95c09141c8"
 
 var song = {}
 
@@ -73,8 +77,6 @@ function printSearch(results){
             audioTag.attr('type', "audio/mpeg")
             audioTag.addClass("audioPreviewSearch") 
             audioTag.append(audioPreview)   
-            /////////////Marjan Added class for audioTag///////////
-
             addBtn.addClass('add-song modal-trigger');
             addBtn.attr('data-title', songTitle);
             addBtn.attr('data-artist', artistName);
@@ -103,7 +105,7 @@ function printPlaylist(playlistObject){
     resultsEl.html("");
 
     var resultsContainer = $('<div>');
-    var playlistTitle = $('<h2>' + playlistObject.name + '<h2>');
+    var playlistTitle = $('<h4>' + playlistObject.name + '<h4>');
     playlistTitle.addClass('playlistTitle');
     resultsContainer.append(playlistTitle);
 
@@ -145,7 +147,8 @@ function printPlaylist(playlistObject){
 
         songCard.addClass('songCard');
         resultsContainer.append(songCard);
-
+        
+        resultsContainer.addClass("resultsContainer")
         resultsEl.append(resultsContainer);
     }
 }
@@ -181,6 +184,11 @@ $('#results').on('click', ".add-song", function(){
         albumCover: cover,
         audioPreview: audio
     }
+})
+
+// Hide dashboard on any button click
+$('button').on("click", function(){
+    $('#dashboard').hide();
 })
 
 //listens for which playlist to add the song to
@@ -244,6 +252,7 @@ $('#user-playlists').on('click', '.delete-playlist-btn', function(){
 
 // Execute a function when the user presses a key on the keyboard
 userInputEl.on("keypress", function (event) {
+    $('#dashboard').hide();
     // If the user presses the "Enter" key on the keyboard
     if (event.key === "Enter") {
         console.log("Enter for search!", event)
@@ -258,3 +267,33 @@ searchButtonEl.on('click', function () {
     var userInput = userInputEl.val()
     getInfo(userInput)
 })
+
+// set Good morning/Good afternoon/good evening on first page
+$(document).ready(function() {
+    getAndSetTopTracks()
+    setGreeting();
+  });
+
+function setGreeting() {
+    var ndate = new Date();
+    var hours = ndate.getHours();
+    var message = hours < 12 ? 'Good Morning' : hours < 18 ? 'Good Afternoon' : 'Good Evening';
+    $("h5.day-message").text(message);
+  }
+
+
+function getAndSetTopTracks() {
+    console.log("hello")
+    var requestUrl = "https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=" + topTracksAPIkey + "&format=json"
+
+    fetch(requestUrl)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            }
+        )
+};
+
+//prints top tracks to dashboard container
