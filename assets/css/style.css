@@ -118,7 +118,7 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 .aside-bar{
     background-color: var(--sectionBack);
     padding: 20px;
-    width: 250px;
+    width: 500px;
     border-radius: 15px;
     border-radius: 20px;
     margin-right: 30px;
