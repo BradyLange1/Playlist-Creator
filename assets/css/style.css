@@ -462,7 +462,10 @@ border-radius: 20px;
 .hero-Img{
     width: 1300px;
 }
-
+/* 
+.playlistTitle{
+    display: block;
+} */
 
 @media screen and (max-width: 768px) {
     .header-parents{
