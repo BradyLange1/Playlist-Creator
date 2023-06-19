@@ -191,7 +191,7 @@ $('#results').on('click', ".add-song", function(){
 
 //listens for which song to delete
 $('#results').on('click', '.delete-song', function(){
-    var selectedPlaylist = $(this).parent().parent().find('h4').text()
+    var selectedPlaylist = $(this).parent().parent().find('h2').text()
     var selectedPlaylistIndex = playlists.findIndex((x) => x.name == selectedPlaylist)
     var selectedPlaylistObject = playlists.find((x) => x.name == selectedPlaylist)
     var selectedPlaylistSongs = playlists[selectedPlaylistIndex].songs
