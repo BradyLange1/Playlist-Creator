@@ -58,7 +58,7 @@
     <main>
         <aside class="aside-bar" id="side-bar">
             <div class="home-page hover">
-                <button type="home-page" class="aside-button">
+                <button type="home-page" id="home-page-button" class="aside-button">
                     <img src="./assets/Images/Home.svg" alt="Home" class="icon home-icon">
                 </button>
                 <p>Home</p>
@@ -79,12 +79,18 @@
         </aside>
 
         <!-- search results and playlists, added HERE -->
-        <div class="results-container">
-            <div id="results"  class="results">
+        <div id="dashboard"><h4 class="day-message"></h4>
+        <!-- top tracks on the first page-->
+            <div class="topTracks-container">
+                <div id="topTracks" class="topTracks"></div>
             </div>
         </div>
-
-          <!-- Modal Structure -->
+        <div class="results-container">
+            <div id="results"  class="results">
+            </div>            
+        </div>
+        
+        <!-- Modal Structure -->
         <div style="color: rgb(33, 33, 33);" id="modal1" class="modal bottom-sheet">
             <div class="modal-content">
                 <h4>Select Playlist to add Song to</h4>
@@ -95,57 +101,22 @@
             </div>
         </div>
 
-        <!-- search results styling practice -->
-        <!-- <aside class="results-container" id="search-container">
-            <section class="cards">
-                <img src="" alt="">
-                <p></p>
-                <p></p>
-            </section>
-
-            <section class="cards">
-                <img src="" alt="">
-                <p></p>
-                <p></p>
-            </section>
-
-            <section class="cards">
-                <img src="" alt="">
-                <p></p>
-                <p></p>
-            </section>
-
-            <section class="cards">
-                <img src="" alt="">
-                <p></p>
-                <p></p>
-            </section>
-        </aside> -->
 
         <!-- playlist section, new cards added programatically -->
-        <div class="playlist-card">
-            <img src="" alt="">
+            
+            <div class="playlist-card">
+                <img src="" alt="">
 
             <!-- search results, added programatically -->
             <div class="results-container" id="search-container"></div>
             </section>
 
-            <!-- playlist section, new cards added programatically -->
-            <!-- <section>
-            <h3>Playlists</h3>
-            <div id="playlist-form">
-              <input id="user-input-playlist" type="text" placeholder="StudyPlaylist"/>
-              <button type="submit" id="add-playlist-button">
-                <img src="" alt="">
-              </button>
-
-            </div>
-        </section> -->
-
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="assets/js/script.js"></script>
+    <!-- <script src="./assets/js/homePage.js"></script> -->
     <script>
         $(document).ready(function(){
             $('.modal').modal();

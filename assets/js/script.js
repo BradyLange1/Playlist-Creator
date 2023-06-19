@@ -5,6 +5,10 @@ var resultsEl = $('#results');
 var addPlaylistButtonEl = $('#create-playlist');
 var playlistNameEl = $('#playlist-name');
 var searchFormEl = $('#search-form');
+var topTracksE1 = $("#topTracks")
+var topTracksContainer =$(".topTracks-container")
+
+const topTracksAPIkey = "3558c7712e3053b9f8860b95c09141c8"
 
 var song = {}
 
@@ -73,14 +77,13 @@ function printSearch(results){
             audioTag.attr('type', "audio/mpeg")
             audioTag.addClass("audioPreviewSearch") 
             audioTag.append(audioPreview)   
-            /////////////Marjan Added class for audioTag///////////
-
             addBtn.addClass('add-song modal-trigger');
             addBtn.attr('data-title', songTitle);
             addBtn.attr('data-artist', artistName);
             addBtn.attr('data-albumCover', albumCover);
             addBtn.attr('data-target', 'modal1');
             addBtn.attr('data-audio', results.data[i].preview)
+            addBtn.attr('data-Id', results.data[i].id)
             resultCard.append(addBtn);
       
             resultCard.addClass('search-result-card');
@@ -99,11 +102,10 @@ $('#user-playlists').on('click', '.user-playlist', function(){
 
 //prints playlist to results container
 function printPlaylist(playlistObject){
-    console.log(playlistObject)
     resultsEl.html("");
 
     var resultsContainer = $('<div>');
-    var playlistTitle = $('<h2>' + playlistObject.name + '<h2>');
+    var playlistTitle = $('<h4>' + playlistObject.name + '<h4>');
     playlistTitle.addClass('playlistTitle');
     resultsContainer.append(playlistTitle);
 
@@ -141,11 +143,13 @@ function printPlaylist(playlistObject){
         songCard.append(audioTag)
 
         deleteBtn.addClass('delete-song');
+        deleteBtn.attr('data-index', i)
         songCard.append(deleteBtn);
 
         songCard.addClass('songCard');
         resultsContainer.append(songCard);
-
+        
+        resultsContainer.addClass("resultsContainer")
         resultsEl.append(resultsContainer);
     }
 }
@@ -175,12 +179,32 @@ $('#results').on('click', ".add-song", function(){
     var artist = $(this).attr("data-artist")
     var cover = $(this).attr("data-albumCover")
     var audio = $(this).attr("data-audio")
+    var songId = $(this).attr("data-Id")
     song = {
         name: title,
         artistName: artist,
         albumCover: cover,
-        audioPreview: audio
+        audioPreview: audio,
+        id: songId
     }
+})
+
+
+// Hide dashboard on any button click
+$('button').on("click", function(){
+    $('#dashboard').hide();
+})
+  
+//listens for which song to delete
+$('#results').on('click', '.delete-song', function(){
+    var selectedPlaylist = $(this).parent().parent().find('h4').text()
+    var selectedPlaylistIndex = playlists.findIndex((x) => x.name == selectedPlaylist)
+    var selectedPlaylistObject = playlists.find((x) => x.name == selectedPlaylist)
+    var selectedPlaylistSongs = playlists[selectedPlaylistIndex].songs
+    var selectedSong = $(this).attr('data-index')
+    selectedPlaylistSongs.splice(selectedSong, 1)
+    printPlaylist(selectedPlaylistObject)
+    localStorage.setItem("userPlaylists", JSON.stringify(playlists))
 })
 
 //listens for which playlist to add the song to
@@ -196,8 +220,8 @@ $('#playlists-modal').on('click', '.playlist-selected', function(){
 function addPlaylist(input){
     var userPlaylist = $('<div class=playlist-list>');
 
-    userPlaylist.append('<h4 class=user-playlist-name>' + input);
     userPlaylist.append('<button class=user-playlist></button>');
+    userPlaylist.append('<p class=user-playlist-name>' + input);
     userPlaylist.append('<button class=delete-playlist-btn></button>');
     $('#user-playlists').append(userPlaylist);
 
@@ -230,7 +254,7 @@ addPlaylistButtonEl.on('click', function(){
 
 //listens for deleting a playlist
 $('#user-playlists').on('click', '.delete-playlist-btn', function(){
-    var selectedPlaylist = $(this).prev().prev().text()
+    var selectedPlaylist = $(this).prev().text()
     console.log(selectedPlaylist)
     selectedPlaylistIndex = playlists.findIndex((x) => x.name == selectedPlaylist)
     playlists.splice(selectedPlaylistIndex, 1)
@@ -244,6 +268,7 @@ $('#user-playlists').on('click', '.delete-playlist-btn', function(){
 
 // Execute a function when the user presses a key on the keyboard
 userInputEl.on("keypress", function (event) {
+    $('#dashboard').hide();
     // If the user presses the "Enter" key on the keyboard
     if (event.key === "Enter") {
         console.log("Enter for search!", event)
@@ -258,3 +283,40 @@ searchButtonEl.on('click', function () {
     var userInput = userInputEl.val()
     getInfo(userInput)
 })
+
+// set Good morning/Good afternoon/good evening on first page
+$(document).ready(function() {
+    getAndSetTopTracks()
+    setGreeting();
+});
+
+function setGreeting() {
+    var ndate = new Date();
+    var hours = ndate.getHours();
+    var message = hours < 12 ? 'Good Morning' : hours < 18 ? 'Good Afternoon' : 'Good Evening';
+    $("day-message").text(message);
+}
+
+function getAndSetTopTracks() {
+    var requestUrl = "https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=" + topTracksAPIkey + "&format=json"
+
+    fetch(requestUrl)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            topTracks = $('#topTracks')
+            $('.day-message').text('Top ten tracks: ')
+            for (i = 0; i < 10; i++){
+                topTracks.append(i+1 + ': ' + data.tracks.track[i].name + ' by ' + data.tracks.track[i].artist.name + '<br>')
+            }
+        })
+};
+
+$('#home-page-button').on('click', function(){
+    location.reload()
+})
+
+
+//prints top tracks to dashboard container
