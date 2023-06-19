@@ -1,6 +1,8 @@
 var userInputEl = $('#search-box');
 var searchButtonEl = $('#search-button');
-var resultsEl = document.querySelector('#results');
+// var resultsEl = document.querySelector('#results-container');
+var resultsContainerEl = $('#results-container');
+var playlistTitleEl = $('#playlistTitle');
 var resultsEl = $('#results');
 var addPlaylistButtonEl = $('#create-playlist');
 var playlistNameEl = $('#playlist-name');
@@ -41,10 +43,10 @@ function getInfo(input) {
 
 //prints search results to results container
 function printSearch(results){
-    resultsEl.html("");
+    resultsContainerEl.html("");
 
     if (results.data.length === 0) {
-        resultsContainer.text('No search results found.');
+        resultsContainerEl.text('No search results found.');
         return;
     } else {
         for (var i = 0; i < results.data.length; i++) {
@@ -102,15 +104,18 @@ $('#user-playlists').on('click', '.user-playlist', function(){
 
 //prints playlist to results container
 function printPlaylist(playlistObject){
+    playlistTitleEl.html("");
     resultsEl.html("");
 
-    var resultsContainer = $('<div>');
-    var playlistTitle = $('<h2>').text(playlistObject.name);
-    playlistTitle.addClass('playlistTitle');
-    resultsContainer.append(playlistTitle);
+    // var playlistTitle = $('<div>');
+    // playlistTitle.addClass('playlistTitle');
+    var titleText = $('<h2>').text(playlistObject.name);
+    playlistTitleEl.append(titleText);
+    // resultsContainerEl.append(playlistTitle);
 
     for (var i = 0; i < playlistObject.songs.length; i++) {
 
+        // var resultsEl = $('<div>'); 
         var songCard = $('<div>');
         var songImg = $('<img>');
         var songTitle = $('<h3>');
@@ -147,10 +152,11 @@ function printPlaylist(playlistObject){
         songCard.append(deleteBtn);
 
         songCard.addClass('songCard');
-        resultsContainer.append(songCard);
-        
-        resultsContainer.addClass("resultsContainer")
-        resultsEl.append(resultsContainer);
+
+        // resultsEl.addClass('results');
+        resultsEl.append(songCard);
+
+        // resultsContainerEl.append(resultsEl);
     }
 }
 

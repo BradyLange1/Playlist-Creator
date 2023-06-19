@@ -80,7 +80,6 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 
 }
 
-
 #search-button{
     float: right;
     border: 0;
@@ -293,7 +292,11 @@ main{
     bottom: 25px;
 }
 
-/* .playlistTitle{} */
+.playlistTitle{
+    display: block;
+    width: 100%;
+    height: 20%;
+}
 
 .resultsContainer{
     display: inline-flex;
@@ -401,6 +404,7 @@ border-radius: 20px;
     margin-bottom: 15px;
     border-radius: 20px;
 }
+
 .topTracks-card:hover{
     background-color: var(--sectionBackHover);
     width: 100%;
@@ -423,9 +427,7 @@ border-radius: 20px;
     font-size: 18px;
     width: 250px;
     bottom: 70px;
-    left: 400px;
-    
-    
+    left: 400px; 
 } 
 
 .topTracksArtist{
@@ -445,10 +447,9 @@ border-radius: 20px;
  margin-top: -30px;
 }
 
-.hero-Img{
-    width: 1300px;
-}
-
+/* .hero-img{
+    width: 3000;
+} */
 
 @media screen and (max-width: 768px) {
     .header-parents{
@@ -466,6 +467,5 @@ border-radius: 20px;
       align-items: center;
         margin-bottom: 20px;
     }
-   
-  }
+}
 
