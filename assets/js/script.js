@@ -327,7 +327,7 @@ function printTopTracks(topTracks){
             var topTracksTitle = $('<h3>');
             var topTracksArtist = $('<p>');
       
-            topTracksButton.addClass('topTracksImg');
+            topTracksButton.addClass('topTracksBtn');
             topTracksCard.append(topTracksButton);
       
             var songName = topTracks.tracks.track[i].name;
@@ -346,7 +346,7 @@ function printTopTracks(topTracks){
         }
 }
 
-$('#topTracks').on('click', '.topTracksImg', function(){
+$('#topTracks').on('click', '.topTracksBtn', function(){
     var song = $(this).next().text()
     getInfo(song)
 })
