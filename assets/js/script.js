@@ -101,7 +101,6 @@ $('#user-playlists').on('click', '.user-playlist', function(){
 
 //prints playlist to results container
 function printPlaylist(playlistObject){
-    console.log(playlistObject)
     resultsEl.html("");
 
     var resultsContainer = $('<div>');
@@ -186,9 +185,22 @@ $('#results').on('click', ".add-song", function(){
     }
 })
 
+
 // Hide dashboard on any button click
 $('button').on("click", function(){
     $('#dashboard').hide();
+  
+//listens for which song to delete
+$('#results').on('click', '.delete-song', function(){
+    var selectedSong = $(this).prev().prev().prev().text()
+    var selectedPlaylist = $(this).parent().parent().find('h2').text()
+    var selectedPlaylistIndex = playlists.findIndex((x) => x.name == selectedPlaylist)
+    var selectedPlaylistObject = playlists.find((x) => x.name == selectedPlaylist)
+    var selectedPlaylistSongs = playlists[selectedPlaylistIndex].songs
+    var selectedSongIndex = selectedPlaylistSongs.findIndex((x) => x.name == selectedSong)
+    selectedPlaylistSongs.splice(selectedSongIndex, 1)
+    printPlaylist(selectedPlaylistObject)
+    localStorage.setItem("userPlaylists", JSON.stringify(playlists))
 })
 
 //listens for which playlist to add the song to
@@ -204,8 +216,8 @@ $('#playlists-modal').on('click', '.playlist-selected', function(){
 function addPlaylist(input){
     var userPlaylist = $('<div class=playlist-list>');
 
-    userPlaylist.append('<h4 class=user-playlist-name>' + input);
     userPlaylist.append('<button class=user-playlist></button>');
+    userPlaylist.append('<p class=user-playlist-name>' + input);
     userPlaylist.append('<button class=delete-playlist-btn></button>');
     $('#user-playlists').append(userPlaylist);
 
@@ -238,7 +250,7 @@ addPlaylistButtonEl.on('click', function(){
 
 //listens for deleting a playlist
 $('#user-playlists').on('click', '.delete-playlist-btn', function(){
-    var selectedPlaylist = $(this).prev().prev().text()
+    var selectedPlaylist = $(this).prev().text()
     console.log(selectedPlaylist)
     selectedPlaylistIndex = playlists.findIndex((x) => x.name == selectedPlaylist)
     playlists.splice(selectedPlaylistIndex, 1)
