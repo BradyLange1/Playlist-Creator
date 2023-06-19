@@ -143,7 +143,6 @@ function printPlaylist(playlistObject){
         songCard.append(audioTag)
 
         deleteBtn.addClass('delete-song');
-        deleteBtn.attr('data-Id', playlistObject.songs[i].id)
         deleteBtn.attr('data-index', i)
         songCard.append(deleteBtn);
 
@@ -194,16 +193,14 @@ $('#results').on('click', ".add-song", function(){
 // Hide dashboard on any button click
 $('button').on("click", function(){
     $('#dashboard').hide();
+})
   
 //listens for which song to delete
 $('#results').on('click', '.delete-song', function(){
-    // var selectedSong = $(this).attr('data-Id')
-    // var selectedPlaylist = $(this).parent().parent().find('h2').text()
-    // var selectedPlaylistIndex = playlists.findIndex((x) => x.name == selectedPlaylist)
-    // var selectedPlaylistObject = playlists.find((x) => x.name == selectedPlaylist)
+    var selectedPlaylist = $(this).parent().parent().find('h4').text()
+    var selectedPlaylistIndex = playlists.findIndex((x) => x.name == selectedPlaylist)
+    var selectedPlaylistObject = playlists.find((x) => x.name == selectedPlaylist)
     var selectedPlaylistSongs = playlists[selectedPlaylistIndex].songs
-    //var selectedSongIndex = selectedPlaylistSongs.findIndex((x) => x.id == selectedSong)
-
     var selectedSong = $(this).attr('data-index')
     selectedPlaylistSongs.splice(selectedSong, 1)
     printPlaylist(selectedPlaylistObject)
@@ -291,14 +288,14 @@ searchButtonEl.on('click', function () {
 $(document).ready(function() {
     getAndSetTopTracks()
     setGreeting();
-  });
+});
 
 function setGreeting() {
     var ndate = new Date();
     var hours = ndate.getHours();
     var message = hours < 12 ? 'Good Morning' : hours < 18 ? 'Good Afternoon' : 'Good Evening';
     $("h5.day-message").text(message);
-  }
+}
 
 
 function getAndSetTopTracks() {
