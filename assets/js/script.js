@@ -196,7 +196,7 @@ $('#results').on('click', ".add-song", function(){
 
 //listens for which song to delete
 $('#results').on('click', '.delete-song', function(){
-    var selectedPlaylist = $(this).parent().parent().find('h4').text()
+    var selectedPlaylist = $(this).parent().parent().find('h2').text()
     var selectedPlaylistIndex = playlists.findIndex((x) => x.name == selectedPlaylist)
     var selectedPlaylistObject = playlists.find((x) => x.name == selectedPlaylist)
     var selectedPlaylistSongs = playlists[selectedPlaylistIndex].songs
@@ -207,7 +207,7 @@ $('#results').on('click', '.delete-song', function(){
 })
 
 // Hide dashboard(home page) on any button click
-$('button').on("click", function(){
+$('body').on("click", 'button', function(){
     $('#dashboard').hide();
 })
 
@@ -272,9 +272,9 @@ $('#user-playlists').on('click', '.delete-playlist-btn', function(){
 
 // Execute a function when the user presses a key on the keyboard
 userInputEl.on("keypress", function (event) {
-    $('#dashboard').hide();
     // If the user presses the "Enter" key on the keyboard
     if (event.key === "Enter") {
+        $('#dashboard').hide();
         console.log("Enter for search!", event)
         // Cancel the default action, if needed
         event.preventDefault();
@@ -327,16 +327,12 @@ function printTopTracks(topTracks){
         for (var i = 0; i <= 5; i++) {
 
             var topTracksCard = $('<div>');
-            var topTracksImg = $('<img>');
+            var topTracksButton = $('<button>');
             var topTracksTitle = $('<h3>');
             var topTracksArtist = $('<p>');
-            var audioTag = $('<audio controls>')
-            var audioPreview = $('source')
       
-            var albumCover = topTracks.tracks.track[i].image[0]['#text'];
-            topTracksImg.attr('src', albumCover);
-            topTracksImg.addClass('topTracksImg');
-            topTracksCard.append(topTracksImg);
+            topTracksButton.addClass('topTracksImg');
+            topTracksCard.append(topTracksButton);
       
             var songName = topTracks.tracks.track[i].name;
             topTracksTitle.text(songName);
@@ -347,15 +343,14 @@ function printTopTracks(topTracks){
             topTracksArtist.text(artistName);
             topTracksArtist.addClass('topTracksArtist');
             topTracksCard.append(topTracksArtist);
-            topTracksCard.append(audioTag)
-
-            audioTag.attr('src', topTracks.tracks.track[i].preview)
-            audioTag.attr('type', "audio/mpeg")
-            audioTag.addClass("audioPreviewTopTracks") 
-            audioTag.append(audioPreview)   
                   
             topTracksCard.addClass('topTracks-card');
             topTracksE1.append(topTracksCard);
             }
         }
 }
+
+$('#topTracks').on('click', '.topTracksImg', function(){
+    var song = $(this).next().text()
+    getInfo(song)
+})
