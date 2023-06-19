@@ -38,8 +38,18 @@
                     </div>
                     <!-- playlist dropdown -->
                     <div>
-                        <p>Playlists</p>
-                        <div id="user-playlists"></div>
+                        <!-- Dropdown Trigger -->
+                        <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Playlists</a>
+
+                        <!-- Dropdown Structure -->
+                        <ul id="user-playlists" class="playlist-dropdown">
+                            <!-- <li><a href="#!">one</a></li>
+                            <li><a href="#!">two</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!">three</a></li>
+                            <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+                            <li><a href="#!"><i class="material-icons">cloud</i>five</a></li> -->
+                        </ul>
                     </div>
 
                     <!-- search section -->
@@ -52,6 +62,7 @@
                         placeholder="Search" autocomplete="off" autofocus="true" />
                     </form>
                 </nav>
+
                 <!-- search section, just an example for how it would look if only searching for things based on song title, other search parameters can be added later -->
                 <form id="search-form" name="myForm" class="search-bar header-bar">
                     <button type="submit" value="Submit" id="search-button">
