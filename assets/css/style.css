@@ -165,7 +165,7 @@ main{
     border-radius: 5px;
 }
 
-.aside-button{
+.aside-button, .nav-button{
     width: 40px;
     height: 40px;
     float: left;

@@ -154,7 +154,6 @@ function printPlaylist(playlistObject){
     }
 }
 
-
 //displays playlists to aside bar and to modal
 function displayUserPlaylists(){
     $('#playlists-modal').html('')
@@ -296,7 +295,7 @@ function setGreeting() {
     $("h4.day-message").text(message);
   }
 
-
+//fetch top tracks info
 function getAndSetTopTracks() {
     var requestUrl = "https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=" + topTracksAPIkey + "&format=json"
 
@@ -306,7 +305,6 @@ function getAndSetTopTracks() {
         })
         .then(function (data) {
             printTopTracks(data);
-
             }
         )
 };
