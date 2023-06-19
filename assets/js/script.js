@@ -101,11 +101,10 @@ $('#user-playlists').on('click', '.user-playlist', function(){
 
 //prints playlist to results container
 function printPlaylist(playlistObject){
-    console.log(playlistObject)
     resultsEl.html("");
 
     var resultsContainer = $('<div>');
-    var playlistTitle = $('<h4>' + playlistObject.name + '<h4>');
+    var playlistTitle = $('<h2>').text(playlistObject.name);
     playlistTitle.addClass('playlistTitle');
     resultsContainer.append(playlistTitle);
 
@@ -186,7 +185,20 @@ $('#results').on('click', ".add-song", function(){
     }
 })
 
-// Hide dashboard on any button click
+//listens for which song to delete
+$('#results').on('click', '.delete-song', function(){
+    var selectedSong = $(this).prev().prev().prev().text()
+    var selectedPlaylist = $(this).parent().parent().find('h2').text()
+    var selectedPlaylistIndex = playlists.findIndex((x) => x.name == selectedPlaylist)
+    var selectedPlaylistObject = playlists.find((x) => x.name == selectedPlaylist)
+    var selectedPlaylistSongs = playlists[selectedPlaylistIndex].songs
+    var selectedSongIndex = selectedPlaylistSongs.findIndex((x) => x.name == selectedSong)
+    selectedPlaylistSongs.splice(selectedSongIndex, 1)
+    printPlaylist(selectedPlaylistObject)
+    localStorage.setItem("userPlaylists", JSON.stringify(playlists))
+})
+
+// Hide dashboard(home page) on any button click
 $('button').on("click", function(){
     $('#dashboard').hide();
 })
@@ -204,8 +216,8 @@ $('#playlists-modal').on('click', '.playlist-selected', function(){
 function addPlaylist(input){
     var userPlaylist = $('<div class=playlist-list>');
 
-    userPlaylist.append('<h4 class=user-playlist-name>' + input);
     userPlaylist.append('<button class=user-playlist></button>');
+    userPlaylist.append('<p class=user-playlist-name>' + input);
     userPlaylist.append('<button class=delete-playlist-btn></button>');
     $('#user-playlists').append(userPlaylist);
 
@@ -238,7 +250,7 @@ addPlaylistButtonEl.on('click', function(){
 
 //listens for deleting a playlist
 $('#user-playlists').on('click', '.delete-playlist-btn', function(){
-    var selectedPlaylist = $(this).prev().prev().text()
+    var selectedPlaylist = $(this).prev().text()
     console.log(selectedPlaylist)
     selectedPlaylistIndex = playlists.findIndex((x) => x.name == selectedPlaylist)
     playlists.splice(selectedPlaylistIndex, 1)
@@ -278,7 +290,7 @@ function setGreeting() {
     var ndate = new Date();
     var hours = ndate.getHours();
     var message = hours < 12 ? 'Good Morning' : hours < 18 ? 'Good Afternoon' : 'Good Evening';
-    $("h5.day-message").text(message);
+    $("h4.day-message").text(message);
   }
 
 
@@ -291,57 +303,51 @@ function getAndSetTopTracks() {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
+            printTopTracks(data);
+
             }
         )
 };
 
-//prints top tracks to dashboard container
+//Display top tracks to dashboard container
 function printTopTracks(topTracks){
+    console.log('TOP TRACKS', topTracks)
     topTracksE1.html("");
 
-    if (topTracks.data.length === 0) {
+    if (topTracks.tracks.track.length === 0) {
         topTracksContainer.text('No top tracks found.');
         return;
     } else {
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i <= 5; i++) {
 
             var topTracksCard = $('<div>');
             var topTracksImg = $('<img>');
             var topTracksTitle = $('<h3>');
             var topTracksArtist = $('<p>');
-            var addBtn = $('<button>');
             var audioTag = $('<audio controls>')
             var audioPreview = $('source')
       
-            var albumCover = topTracks.data[i].album.cover_medium;
+            var albumCover = topTracks.tracks.track[i].image[0]['#text'];
             topTracksImg.attr('src', albumCover);
             topTracksImg.addClass('topTracksImg');
             topTracksCard.append(topTracksImg);
       
-            var topTracksTitle = topTracks.data[i].title;
-            topTracksTitle.text(topTracksTitle);
+            var songName = topTracks.tracks.track[i].name;
+            topTracksTitle.text(songName);
             topTracksTitle.addClass('topTracksTitle');
             topTracksCard.append(topTracksTitle);
       
-            var artistName = topTracks.data[i].artist.name;
+            var artistName = topTracks.tracks.track[i].artist.name;
             topTracksArtist.text(artistName);
             topTracksArtist.addClass('topTracksArtist');
             topTracksCard.append(topTracksArtist);
             topTracksCard.append(audioTag)
 
-            audioTag.attr('src', topTrackss.data[i].preview)
+            audioTag.attr('src', topTracks.tracks.track[i].preview)
             audioTag.attr('type', "audio/mpeg")
-            audioTag.addClass("audioPreviewSearch") 
+            audioTag.addClass("audioPreviewTopTracks") 
             audioTag.append(audioPreview)   
-            addBtn.addClass('add-song modal-trigger');
-            addBtn.attr('data-title', topTracksTitle);
-            addBtn.attr('data-artist', artistName);
-            addBtn.attr('data-albumCover', albumCover);
-            addBtn.attr('data-target', 'modal1');
-            addBtn.attr('data-audio', topTrackss.data[i].preview)
-            resultCard.append(addBtn);
-      
+                  
             topTracksCard.addClass('topTracks-card');
             topTracksE1.append(topTracksCard);
             }

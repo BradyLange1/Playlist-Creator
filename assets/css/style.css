@@ -3,7 +3,7 @@
     --background: #090011;
     --active-text: #cecece;
     --deactive-text:#151515;
-    --sectionBack:#23152ea8;
+    --sectionBack:#1a151da8;
     --sectionBackHover:hsla(273, 33%, 19%, 0.66);
     --search-box:hsl(0, 0%, 20%, 0.5);
     --pop-up:hsl(258, 24%, 14%);
@@ -56,11 +56,9 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 }
 
 .search-bar{
-    /* justify-content: flex-end; */
-    flex-wrap:wrap;
     display: flex;
+    flex-wrap:wrap;
     align-items: center;    
-    /* display: inline-block; */
     justify-content: space-between;
     float: right;
     background-color:var(--search-box);
@@ -111,11 +109,11 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 
 main{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .cards{
-    flex: 3;
+    flex: 70%;
     padding: 20px;
     height: 700px;    
 }
@@ -124,7 +122,6 @@ main{
      flex: 0 0 200px;
      background-color: var(--sectionBack);
      padding: 20px;
-     /* width: 20vw; */
      border-radius: 15px;
      border-radius: 20px;
      margin-right: 30px;
@@ -359,12 +356,12 @@ border-radius: 20px;
 .delete-song{
     background-image:url(../Images/ic_round-close\ \(4\).svg);
     border-radius: 60px;
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
     border: none;
     position: relative;
     bottom: 270px;
-    left: 200px;
+    left: 210px;
     position: 250px 400px;
     background-size: 120%;
     background-position: center;
@@ -372,20 +369,85 @@ border-radius: 20px;
 }
 
 .delete-song:hover{
-    background-image:url(../Images/ic_round-close-hover.svg);
+    background-image:url(../Images/ic_round-close\ \(6\).svg);
     border-radius: 60px;
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
     border: none;
     position: relative;
     bottom: 270px;
-    left: 200px;
+    left: 210px;
     position: 250px 400px;
     background-size: 120%;
     background-position: center;
     cursor: pointer;
 }
 
+/* Home page */
+
+#dashboard{
+   flex: 70%;
+}
+
+.topTracks{
+    flex: 70%;
+    justify-content: space-between;
+}
+
+.topTracks-card{
+    background-color: var(--sectionBack);
+    width: 100%;
+    height: 70px;
+    margin-bottom: 15px;
+    border-radius: 20px;
+}
+.topTracks-card:hover{
+    background-color: var(--sectionBackHover);
+    width: 100%;
+    height: 70px;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.topTracksImg{
+    background: black;
+    width: 50px;
+    margin-left: 15px;
+    margin-top: 8px;
+    border-radius: 5px;
+   
+}
+
+.topTracksTitle{
+    position: relative;
+    font-size: 18px;
+    width: 250px;
+    bottom: 70px;
+    left: 400px;
+    
+    
+} 
+
+.topTracksArtist{
+ position: relative;
+ bottom: 140px;
+ margin-left: 80px;
+ width: 200px;
+ margin-top: 50px;
+}
+
+.audioPreviewTopTracks{
+ position: relative;
+ float: right;
+ height: 30px;
+ bottom: 150px;
+ margin-right: 15px;
+ margin-top: -30px;
+}
+
+.hero-Img{
+    width: 1300px;
+}
 
 
 @media screen and (max-width: 768px) {
@@ -404,6 +466,6 @@ border-radius: 20px;
       align-items: center;
         margin-bottom: 20px;
     }
-   
+
   }
 
