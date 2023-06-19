@@ -35,7 +35,7 @@
     <main>
         <aside class="aside-bar" id="side-bar">
             <div class="home-page hover">
-                <button type="home-page" class="aside-button">
+                <button type="home-page" id="home-page-button" class="aside-button">
                     <img src="./assets/Images/Home.svg" alt="Home" class="icon home-icon">
                 </button>
                 <p>Home</p>
@@ -56,17 +56,18 @@
         </aside>
 
         <!-- search results and playlists, added HERE -->
-        <div id="dashboard"><h5 class="day-message"></h5>
+        <div id="dashboard"><h4 class="day-message"></h4>
         <!-- top tracks on the first page-->
-            <div class="topTracks-container"></div>
-            <div id="topTracks" class="topTracks"></div>
+            <div class="topTracks-container">
+                <div id="topTracks" class="topTracks"></div>
+            </div>
         </div>
         <div class="results-container">
             <div id="results"  class="results">
             </div>            
         </div>
         
-          <!-- Modal Structure -->
+        <!-- Modal Structure -->
         <div style="color: rgb(33, 33, 33);" id="modal1" class="modal bottom-sheet">
             <div class="modal-content">
                 <h4>Select Playlist to add Song to</h4>
