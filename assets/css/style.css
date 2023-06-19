@@ -3,8 +3,8 @@
     --background: #090011;
     --active-text: #cecece;
     --deactive-text:#151515;
-    --sectionBack:#1b1023a8;
-    --sectionBackHover:hsla(274, 33%, 17%, 0.66);
+    --sectionBack:#23152ea8;
+    --sectionBackHover:hsla(273, 33%, 19%, 0.66);
     --search-box:hsl(0, 0%, 20%, 0.5);
     --pop-up:hsl(258, 24%, 14%);
 
@@ -12,6 +12,10 @@
 
 *{
     font-size: 18px;
+}
+
+p{
+    margin: 10px
 }
 
 html{
@@ -68,7 +72,6 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 }
 
 .search-box{
-    /* margin: 50px; */
     color: var(--active-text);
     background: transparent;
     float: left;
@@ -79,9 +82,6 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 
 }
 
-/* .search-bar button img{
-    width: 35px;
-} */
 
 #search-button{
     float: right;
@@ -106,7 +106,6 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 
 .home-icon{
     width: 23px;
-    margin-top:-6px;
     margin-right: 4px;
 }
 
@@ -118,9 +117,7 @@ main{
 .cards{
     flex: 3;
     padding: 20px;
-    height: 700px;
-    /* background-color: var(--sectionBack); */
-    
+    height: 700px;    
 }
 
 .aside-bar{
@@ -134,6 +131,18 @@ main{
     
 }
 
+.hover{
+    display: flex;
+    align-items: center;
+}
+
+.hover:hover{
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    background-color: var(--sectionBackHover);
+    border-radius: 5px;
+}
 
 .aside-button{
     width: 40px;
@@ -145,23 +154,12 @@ main{
     cursor: pointer;
 }
 
-/* for TEST */
-/* .aside-button:active{
-    background: pink;
-}
-.aside-button:target{
-    background: rebeccapurple;
-} */
-
-
 .playlist-list{
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
 }
 .playlist-list:hover{
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
     background-color: var(--sectionBackHover);
     border-radius: 5px;
@@ -170,6 +168,11 @@ main{
 
 .user-playlist-name{
     margin: 10px;
+    width: 280px;
+}
+
+#playlist-name{
+    margin-left: 10px;
     width: 280px;
 }
 
@@ -215,21 +218,6 @@ main{
     justify-content: space-between;
 }
 
-
-/* input:-internal-autofill-selected {
-    appearance: menulist-button;
-    background-image: none !important;
-    background-color: pink !important;
-    color: fieldtext !important;
-}
-
-input:-webkit-autofill {
-    appearance: menulist-button;
-    background-image: none !important;
-    background-color: pink !important;
-    color: fieldtext !important;
-} */
-
 .search-result-card{
     display:inline;
     background-color: var(--sectionBack);
@@ -258,9 +246,11 @@ input:-webkit-autofill {
 }
 
 .resultTitle{
+    width: 220px;
+    height: 50px;
     font-size: 18px;
     margin-left: 10%;
-    margin-top: 10%;
+    margin-right: 15px;
 }
 
 /* Add song button */
@@ -270,11 +260,12 @@ input:-webkit-autofill {
     width: 40px;
     height: 40px;
     border: none;
-    margin-top: 35%;
-    margin-left: 80%;
     background-size: 100%;
     background-position: center;
     background-size: 100%;
+    position: relative;
+    top: 70px;
+    left: 200px;
 }
 
 .add-song:hover {
@@ -283,9 +274,10 @@ input:-webkit-autofill {
     width: 43px;
     height: 43px;
     border: none;
-    margin-top: 34%;
-    margin-left: 79%;
     background-size: 100%;
+    position: relative;
+    top: 70px;
+    left: 200px;
    
 }
 
@@ -300,61 +292,107 @@ input:-webkit-autofill {
     width: 230px;
     height: 30px;
     margin-left: 4%;
-    margin-top: 5%;
+    position: relative;
+    bottom: 25px;
 }
 
 /* .playlistTitle{} */
 
+.resultsContainer{
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 .songCard{
-    display:block;
-    flex: 1 0 1000px;
+    display:inline;
     background-color: var(--sectionBack);
-    /* width: 70vw; */
-    height: 20vh;
+    width: 250px;
+    height: 400px;
     align-items: center;
     margin-bottom: 20px;
     border-radius: 20px;
 }
 
+.songCard:hover{
+display:inline;
+background-color: var(--sectionBackHover);
+width: 250px;
+height: 400px;
+align-items: center;
+margin-bottom: 20px;
+border-radius: 20px;
+}
+
 .songImg{
-    width: 75px;
-    margin-left: 2%;
-    margin-top: 2%;
+    width: 230px;
+    margin-left: 4%;
+    margin-top: 5%;
     border-radius: 15px;
 }
 
 .songTitle{
-    display:inline;
+    width: 220px;
+    height: 50px;
     font-size: 18px;
-    /* margin-left: 10%;
-    margin-top: 10%; */
+    margin-left: 10%;
+    margin-right: 15px;
 }
 
 .songArtist{
-    display:inline;
-    font-size: 14px;
-    /* margin-left: 10%;
+    width: 230px;
+    margin-left: 10%;
     margin-top: 3%;
-    margin-bottom: -50%; */
+    margin-bottom: -50%;
+    font-size: 14px;
 }
 
 .audioPreviewPlaylist{
-    display:inline;
-    width: 200px;
-    height: 20px;
+    width: 230px;
+    height: 30px;
     margin-left: 4%;
-    margin-top: 5%;
+    position: relative;
+    bottom: 25px;
+    
 }
 
-.artistName{
-    margin-top: 3%;
-    margin-bottom: -50%;
+.delete-song{
+    background-image:url(../Images/ic_round-close\ \(4\).svg);
+    border-radius: 60px;
+    width: 45px;
+    height: 45px;
+    border: none;
+    position: relative;
+    bottom: 270px;
+    left: 200px;
+    position: 250px 400px;
+    background-size: 120%;
+    background-position: center;
+    cursor: pointer;
 }
+
+.delete-song:hover{
+    background-image:url(../Images/ic_round-close-hover.svg);
+    border-radius: 60px;
+    width: 45px;
+    height: 45px;
+    border: none;
+    position: relative;
+    bottom: 270px;
+    left: 200px;
+    position: 250px 400px;
+    background-size: 120%;
+    background-position: center;
+    cursor: pointer;
+}
+
+
 
 @media screen and (max-width: 768px) {
     .header-parents{
       flex-direction: column;
       align-items: center;
+      margin: 1px
     }
 
     .logo-container{
@@ -366,79 +404,6 @@ input:-webkit-autofill {
       align-items: center;
         margin-bottom: 20px;
     }
-    /* .search-result-card{
-        display:inline;
-        background-color: var(--sectionBack);
-        width: 130%;
-        height: 80px;
-        align-items: center;
-        margin-bottom: 20px;
-        border-radius: 20px;
-        margin-top:20px ;
-    }
-    
-    .search-result-card:hover{
-        display:inline;
-        background-color: var(--sectionBackHover);
-        width: 130%;
-        height: 80px;
-        align-items: center;
-        margin-bottom: 20px;
-        border-radius: 20px;
-        margin-top:20px ;
-    }
-
-    .albumCover{
-        width: 70px;
-        margin-left: 2%;
-        margin-top: 1.5%;
-        border-radius: 15px;
-    }
-    .songTitle{
-        font-size: 15px;
-        margin-top: -20%;
-        margin-left: 25%;
-    } */
-    
-    /* Add song button */
-    /* .add-song {
-        background-image:url(../Images/add-btn.svg);
-        border-radius: 50px;
-        width: 30px;
-        height: 30px;
-        border-color: none;
-        margin-top: 19%;
-        margin-left: 90%;
-        background-size: 100%;
-       
-    }
-    
-    .add-song:hover {
-        background-image:url(../Images/add-btn-hover.svg);
-        border-radius: 50px;
-        width: 35px;
-        height: 35px;
-        border-color: none;
-        margin-top: 19%;
-        margin-left: 90%;
-        background-size: 100%;
-       
-    }
-    
-    .artistName{
-        margin-left: 25%;
-        font-size: 14px;
-    }
-    
-    /* .audioPreview{
-        width: 230px;
-        height: 30px;
-        margin-left: 34%;
-        margin-top: 50px;
-    } */
-    /* .artistName{
-        margin-top: 3%;
-        margin-bottom: -50%;
-    } */ 
+   
   }
 
