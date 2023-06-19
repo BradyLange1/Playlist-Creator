@@ -20,8 +20,8 @@ p{
 
 html{
     background-color: var(--background);
-    margin-left: 30px;
-    margin-right: 30px;
+    margin-left: 60px;
+    margin-right: 60px;
     color: var(--active-text);
     /* background-image:url(../Images/Home\ Page\ \(1\).svg); */
     background-position: right;
@@ -38,6 +38,7 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     box-shadow: none;
 }
 
+
 .header-parents{
     display: flex;
     align-items: center;
@@ -49,16 +50,9 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 
 .logo{
     border-color: solid var(--background);
+    display: inline-block;
     margin-left: 20px;
     justify-content: space-between;
-}
-
-.main-logo{
-    display: inline-block;
-}
-
-.mobile-logo{
-    display: none;
 }
 
 .search-bar{
@@ -83,6 +77,7 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     border: 0;
     outline: none;
     padding: 8px 30px;
+
 }
 
 
@@ -105,41 +100,22 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     height: 35px;
     background: transparent;
     cursor: pointer;
-    margin-top: 3px;
-    margin-right: -3px;
 }
 
 .home-icon{
     width: 23px;
-    margin-top: -2px;
-    margin-right: 2px;
-}
-
-.aside-bar{
-    background-color: var(--sectionBack);
-    padding: 20px;
-    width: 250px;
-    border-radius: 15px;
-    border-radius: 20px;
-    margin-right: 30px;
-}
-
-.mobile-nav{
-    display: none;
+    margin-right: 4px;
 }
 
 main{
     display: flex;
     flex-wrap: wrap;
-    width: 90vw;
 }
 
 .cards{
     flex: 70%;
     padding: 20px;
-    height: 700px;
-    /* background-color: var(--sectionBack); */
-    
+    height: 700px;    
 }
 
 .aside-bar{
@@ -179,12 +155,12 @@ main{
     display: flex;
     align-items: center;
 }
-
 .playlist-list:hover{
     display: flex;
     align-items: center;
     background-color: var(--sectionBackHover);
     border-radius: 5px;
+    
 }
 
 .user-playlist-name{
@@ -205,7 +181,7 @@ main{
 .user-playlist{
     background-image: url(../Images/playlist\ \(1\).svg);
     width: 40px;
-    height: 28px;
+    height: 40px;
     float: left;
     border: 0px;
     border-radius: 15px;
@@ -217,8 +193,8 @@ main{
 
 .delete-playlist-btn{
     background-image: url(../Images/delet-btn\ \(2\).svg);
-    height: 15px;
-    width: 17px;
+    height: 18px;
+    width: 18px;
     float: right;
     border: 0px;
     background-position: center;
@@ -475,92 +451,21 @@ border-radius: 20px;
 
 
 @media screen and (max-width: 768px) {
-    html{
-        background-color: var(--background);
-        margin-left: 15px;
-        margin-right: 15px;
-    }
-
     .header-parents{
-        flex-direction: row;
-        flex-wrap: wrap;
-        margin: 1px;
-        align-items: flex-start;
-        margin: 1px
-      }
-    
-    .logo-container{
-        margin-left: 0;
-        margin-right: 10px;
-        width: auto;
-    }
-    
-    .logo{
-        border-color: solid var(--background);
-        display: inline-block;
-        justify-content: space-between;
-        margin-left: -10px;
+      flex-direction: column;
+      align-items: center;
+      margin: 1px
     }
 
-    .main-logo{
-        display: none;
-    }
-    
-    .mobile-logo{
-        display: inline-block;
+    .logo-container{
+        margin-left: 60%;
     }
 
     .search-bar{
-        display: none;
+      flex-direction: column;
+      align-items: center;
+        margin-bottom: 20px;
     }
+   
+  }
 
-    .search-box{
-        display: none;
-    }
-
-    .nav-search-bar{
-        /* flex-direction: column; */
-        align-items: flex-start;
-        width: 300px;
-
-        flex-wrap:wrap;
-        display: flex;
-        align-items: center;    
-        justify-content: space-between;
-        float: right;
-        background-color:var(--search-box);
-        border: var(--search-box);
-        border-radius: 100px;
-        height: 50px;
-        font-size: 20px;
-    }
-
-    .nav-search-box{
-        color: var(--active-text);
-        background: transparent;
-        float: left;
-        flex: 1;
-        border: 0;
-        outline: none;
-        padding: 8px 30px;
-    }
-
-    .aside-bar{
-        display: none;
-    }
-
-    .mobile-nav{
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        background-color: var(--sectionBack);
-        padding: 20px;
-        width: auto;
-        border-radius: 15px;
-        border-radius: 20px;
-        margin-right: 0px;
-    }
-}
-
-@media screen and (max-width: 426px) {
-}
