@@ -105,7 +105,7 @@ function printPlaylist(playlistObject){
     resultsEl.html("");
 
     var resultsContainer = $('<div>');
-    var playlistTitle = $('<h4>' + playlistObject.name + '<h4>');
+    var playlistTitle = $('<h2>').text(playlistObject.name);
     playlistTitle.addClass('playlistTitle');
     resultsContainer.append(playlistTitle);
 
@@ -189,12 +189,6 @@ $('#results').on('click', ".add-song", function(){
     }
 })
 
-
-// Hide dashboard on any button click
-$('button').on("click", function(){
-    $('#dashboard').hide();
-})
-  
 //listens for which song to delete
 $('#results').on('click', '.delete-song', function(){
     var selectedPlaylist = $(this).parent().parent().find('h4').text()
@@ -205,6 +199,11 @@ $('#results').on('click', '.delete-song', function(){
     selectedPlaylistSongs.splice(selectedSong, 1)
     printPlaylist(selectedPlaylistObject)
     localStorage.setItem("userPlaylists", JSON.stringify(playlists))
+})
+
+// Hide dashboard(home page) on any button click
+$('button').on("click", function(){
+    $('#dashboard').hide();
 })
 
 //listens for which playlist to add the song to
@@ -294,8 +293,9 @@ function setGreeting() {
     var ndate = new Date();
     var hours = ndate.getHours();
     var message = hours < 12 ? 'Good Morning' : hours < 18 ? 'Good Afternoon' : 'Good Evening';
-    $("day-message").text(message);
-}
+    $("h4.day-message").text(message);
+  }
+
 
 function getAndSetTopTracks() {
     var requestUrl = "https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=" + topTracksAPIkey + "&format=json"
@@ -305,18 +305,53 @@ function getAndSetTopTracks() {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
-            topTracks = $('#topTracks')
-            $('.day-message').text('Top ten tracks: ')
-            for (i = 0; i < 10; i++){
-                topTracks.append(i+1 + ': ' + data.tracks.track[i].name + ' by ' + data.tracks.track[i].artist.name + '<br>')
+            printTopTracks(data);
+
             }
-        })
+        )
 };
 
-$('#home-page-button').on('click', function(){
-    location.reload()
-})
+//Display top tracks to dashboard container
+function printTopTracks(topTracks){
+    console.log('TOP TRACKS', topTracks)
+    topTracksE1.html("");
 
+    if (topTracks.tracks.track.length === 0) {
+        topTracksContainer.text('No top tracks found.');
+        return;
+    } else {
+        for (var i = 0; i <= 5; i++) {
 
-//prints top tracks to dashboard container
+            var topTracksCard = $('<div>');
+            var topTracksImg = $('<img>');
+            var topTracksTitle = $('<h3>');
+            var topTracksArtist = $('<p>');
+            var audioTag = $('<audio controls>')
+            var audioPreview = $('source')
+      
+            var albumCover = topTracks.tracks.track[i].image[0]['#text'];
+            topTracksImg.attr('src', albumCover);
+            topTracksImg.addClass('topTracksImg');
+            topTracksCard.append(topTracksImg);
+      
+            var songName = topTracks.tracks.track[i].name;
+            topTracksTitle.text(songName);
+            topTracksTitle.addClass('topTracksTitle');
+            topTracksCard.append(topTracksTitle);
+      
+            var artistName = topTracks.tracks.track[i].artist.name;
+            topTracksArtist.text(artistName);
+            topTracksArtist.addClass('topTracksArtist');
+            topTracksCard.append(topTracksArtist);
+            topTracksCard.append(audioTag)
+
+            audioTag.attr('src', topTracks.tracks.track[i].preview)
+            audioTag.attr('type', "audio/mpeg")
+            audioTag.addClass("audioPreviewTopTracks") 
+            audioTag.append(audioPreview)   
+                  
+            topTracksCard.addClass('topTracks-card');
+            topTracksE1.append(topTracksCard);
+            }
+        }
+}

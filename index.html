@@ -68,9 +68,9 @@
     <main>
         <aside class="aside-bar" id="side-bar">
             <div class="home-page hover">
-                <button type="home-page" id="home-page-button" class="aside-button">
+                <a href="./index.html"><button type="home-page" class="aside-button">
                     <img src="./assets/Images/Home.svg" alt="Home" class="icon home-icon">
-                </button>
+                </button></a>
                 <p>Home</p>
             </div>
             <div class="hover">
@@ -90,6 +90,7 @@
 
         <!-- search results and playlists, added HERE -->
         <div id="dashboard"><h4 class="day-message"></h4>
+            <img src="./assets/Images/pexels-wendy-wei-1190298.jpg" class="hero-Img" alt="top-tracks"><h3>Top Tracks</h3>
         <!-- top tracks on the first page-->
             <div class="topTracks-container">
                 <div id="topTracks" class="topTracks"></div>
@@ -114,11 +115,11 @@
 
         <!-- playlist section, new cards added programatically -->
             
-            <div class="playlist-card">
-                <img src="" alt="">
+            <!-- <div class="playlist-card">
+                <img src="" alt=""> -->
 
             <!-- search results, added programatically -->
-            <div class="results-container" id="search-container"></div>
+            <!-- <div class="results-container" id="search-container"></div> -->
             </section>
 
     </main>
@@ -126,7 +127,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="assets/js/script.js"></script>
-    <!-- <script src="./assets/js/homePage.js"></script> -->
     <script>
         $(document).ready(function(){
             $('.modal').modal();
