@@ -294,12 +294,10 @@ function setGreeting() {
     var ndate = new Date();
     var hours = ndate.getHours();
     var message = hours < 12 ? 'Good Morning' : hours < 18 ? 'Good Afternoon' : 'Good Evening';
-    $("h5.day-message").text(message);
+    $("day-message").text(message);
 }
 
-
 function getAndSetTopTracks() {
-    console.log("hello")
     var requestUrl = "https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=" + topTracksAPIkey + "&format=json"
 
     fetch(requestUrl)
@@ -308,8 +306,17 @@ function getAndSetTopTracks() {
         })
         .then(function (data) {
             console.log(data);
+            topTracks = $('#topTracks')
+            $('.day-message').text('Top ten tracks: ')
+            for (i = 0; i < 10; i++){
+                topTracks.append(i+1 + ': ' + data.tracks.track[i].name + ' by ' + data.tracks.track[i].artist.name + '<br>')
             }
-        )
+        })
 };
+
+$('#home-page-button').on('click', function(){
+    location.reload()
+})
+
 
 //prints top tracks to dashboard container
