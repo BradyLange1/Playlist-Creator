@@ -83,6 +83,7 @@ function printSearch(results){
             addBtn.attr('data-albumCover', albumCover);
             addBtn.attr('data-target', 'modal1');
             addBtn.attr('data-audio', results.data[i].preview)
+            addBtn.attr('data-Id', results.data[i].id)
             resultCard.append(addBtn);
       
             resultCard.addClass('search-result-card');
@@ -142,6 +143,7 @@ function printPlaylist(playlistObject){
         songCard.append(audioTag)
 
         deleteBtn.addClass('delete-song');
+        deleteBtn.attr('data-index', i)
         songCard.append(deleteBtn);
 
         songCard.addClass('songCard');
@@ -177,23 +179,24 @@ $('#results').on('click', ".add-song", function(){
     var artist = $(this).attr("data-artist")
     var cover = $(this).attr("data-albumCover")
     var audio = $(this).attr("data-audio")
+    var songId = $(this).attr("data-Id")
     song = {
         name: title,
         artistName: artist,
         albumCover: cover,
-        audioPreview: audio
+        audioPreview: audio,
+        id: songId
     }
 })
 
 //listens for which song to delete
 $('#results').on('click', '.delete-song', function(){
-    var selectedSong = $(this).prev().prev().prev().text()
-    var selectedPlaylist = $(this).parent().parent().find('h2').text()
+    var selectedPlaylist = $(this).parent().parent().find('h4').text()
     var selectedPlaylistIndex = playlists.findIndex((x) => x.name == selectedPlaylist)
     var selectedPlaylistObject = playlists.find((x) => x.name == selectedPlaylist)
     var selectedPlaylistSongs = playlists[selectedPlaylistIndex].songs
-    var selectedSongIndex = selectedPlaylistSongs.findIndex((x) => x.name == selectedSong)
-    selectedPlaylistSongs.splice(selectedSongIndex, 1)
+    var selectedSong = $(this).attr('data-index')
+    selectedPlaylistSongs.splice(selectedSong, 1)
     printPlaylist(selectedPlaylistObject)
     localStorage.setItem("userPlaylists", JSON.stringify(playlists))
 })
@@ -284,7 +287,7 @@ searchButtonEl.on('click', function () {
 $(document).ready(function() {
     getAndSetTopTracks()
     setGreeting();
-  });
+});
 
 function setGreeting() {
     var ndate = new Date();
@@ -295,7 +298,6 @@ function setGreeting() {
 
 
 function getAndSetTopTracks() {
-    console.log("hello")
     var requestUrl = "https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=" + topTracksAPIkey + "&format=json"
 
     fetch(requestUrl)
