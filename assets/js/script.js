@@ -167,7 +167,7 @@ function displayUserPlaylists(){
         userPlaylist.append('<button class=delete-playlist-btn></button>');
         $('#user-playlists').append(userPlaylist);
 
-        $('#playlists-modal').append('<div class=choosingPlaylist><button class=playlist-selected></button>'  + playlists[i].name + "</div>")
+        $('#playlists-modal').append('<div class=choosingPlaylist><button class=playlist-selected>' + playlists[i].name + '</button></div>')
     }
 }
 
