@@ -1,6 +1,8 @@
 var userInputEl = $('#search-box');
 var searchButtonEl = $('#search-button');
-var resultsEl = document.querySelector('#results');
+// var resultsEl = document.querySelector('#results-container');
+var resultsContainerEl = $('#results-container');
+var playlistTitleEl = $('#playlistTitle');
 var resultsEl = $('#results');
 var addPlaylistButtonEl = $('#create-playlist');
 var playlistNameEl = $('#playlist-name');
@@ -41,12 +43,16 @@ function getInfo(input) {
 
 //prints search results to results container
 function printSearch(results){
-    resultsEl.html("");
+    resultsContainerEl.html("");
 
     if (results.data.length === 0) {
-        resultsContainer.text('No search results found.');
+        resultsContainerEl.text('No search results found.');
         return;
     } else {
+        var resultsEl = $('<div>');
+        resultsEl.addClass('results');
+        resultsContainerEl.append(resultsEl);
+
         for (var i = 0; i < results.data.length; i++) {
 
             var resultCard = $('<div>');
@@ -77,6 +83,7 @@ function printSearch(results){
             audioTag.attr('type', "audio/mpeg")
             audioTag.addClass("audioPreviewSearch") 
             audioTag.append(audioPreview)   
+
             addBtn.addClass('add-song modal-trigger');
             addBtn.attr('data-title', songTitle);
             addBtn.attr('data-artist', artistName);
@@ -102,12 +109,17 @@ $('#user-playlists').on('click', '.user-playlist', function(){
 
 //prints playlist to results container
 function printPlaylist(playlistObject){
-    resultsEl.html("");
+    resultsContainerEl.html("");
 
-    var resultsContainer = $('<div>');
-    var playlistTitle = $('<h2>').text(playlistObject.name);
-    playlistTitle.addClass('playlistTitle');
-    resultsContainer.append(playlistTitle);
+    var playlistTitleEl = $('<div>');
+    var titleText = $('<h2>').text(playlistObject.name);
+    playlistTitleEl.addClass('playlistTitle');
+    playlistTitleEl.append(titleText);
+    resultsContainerEl.append(playlistTitleEl);
+
+    var resultsEl = $('<div>');
+    resultsEl.addClass('results');
+    resultsContainerEl.append(resultsEl);
 
     for (var i = 0; i < playlistObject.songs.length; i++) {
 
@@ -147,13 +159,9 @@ function printPlaylist(playlistObject){
         songCard.append(deleteBtn);
 
         songCard.addClass('songCard');
-        resultsContainer.append(songCard);
-        
-        resultsContainer.addClass("resultsContainer")
-        resultsEl.append(resultsContainer);
+        resultsEl.append(songCard);
     }
 }
-
 
 //displays playlists to aside bar and to modal
 function displayUserPlaylists(){
@@ -174,7 +182,7 @@ function displayUserPlaylists(){
 displayUserPlaylists()
 
 //listens for which song to add to a playlist
-$('#results').on('click', ".add-song", function(){
+$('#results-container').on('click', ".add-song", function(){
     var title = $(this).attr("data-title")
     var artist = $(this).attr("data-artist")
     var cover = $(this).attr("data-albumCover")
@@ -190,8 +198,8 @@ $('#results').on('click', ".add-song", function(){
 })
 
 //listens for which song to delete
-$('#results').on('click', '.delete-song', function(){
-    var selectedPlaylist = $(this).parent().parent().find('h2').text()
+$('#results-container').on('click', '.delete-song', function(){
+    var selectedPlaylist = $(this).parent().parent().parent().find('h2').text()
     var selectedPlaylistIndex = playlists.findIndex((x) => x.name == selectedPlaylist)
     var selectedPlaylistObject = playlists.find((x) => x.name == selectedPlaylist)
     var selectedPlaylistSongs = playlists[selectedPlaylistIndex].songs
@@ -296,7 +304,7 @@ function setGreeting() {
     $("h4.day-message").text(message);
   }
 
-
+//fetch top tracks info
 function getAndSetTopTracks() {
     var requestUrl = "https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=" + topTracksAPIkey + "&format=json"
 
@@ -306,7 +314,6 @@ function getAndSetTopTracks() {
         })
         .then(function (data) {
             printTopTracks(data);
-
             }
         )
 };
