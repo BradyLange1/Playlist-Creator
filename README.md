@@ -1,4 +1,6 @@
 # Playlist-Creator
+## project description
+playlist creation and generation, search based on genre, artist, song, etc
 
 ## Rules
 - Main branch is protected
@@ -12,11 +14,6 @@
 - Marjan UI
 - Quincy HTML and everything else as needed
 
-## project title
-music-app
-
-## project description
-playlist creation and generation, search based on genre, artist, song, etc
 
 ## user story
 - as a student and a music enthusiast, I want to create playlists that are good to study to, so that I can be calm and productive while working on homework
@@ -40,10 +37,14 @@ playlist creation and generation, search based on genre, artist, song, etc
 
 
 ## wireframe or sketch of design
-
-https://www.figma.com/file/DArxNL5IE4bz3VY6NdFliq/Untitled?type=design&t=iFXlxdW3lphaqJ0P-6
-
 ![High-fidelity wireframe](./assets/Images/High-fi.jpg)
-## APIs to be used
+
+## APIs used
 - deezer
-- other music APIs TBD
+- last.fm
+
+## Technologies used
+![](./assets/Images/HTML5_logo_and_wordmark%201.svg)![](./assets/Images/css3-logo-8724075274-seeklogo%201.svg)  ![](./assets/Images/Javascript.svg)  ![](./assets/Images/jquery%20(2).svg)    ![](./assets/Images/materializecss%201.svg)  ![](./assets/Images/figma%20(2).svg)
+
+## Deployed link
+https://bradylange1.github.io/Playlist-Creator/
