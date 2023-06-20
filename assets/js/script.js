@@ -49,6 +49,10 @@ function printSearch(results){
         resultsContainerEl.text('No search results found.');
         return;
     } else {
+        var resultsEl = $('<div>');
+        resultsEl.addClass('results');
+        resultsContainerEl.append(resultsEl);
+
         for (var i = 0; i < results.data.length; i++) {
 
             var resultCard = $('<div>');
@@ -104,18 +108,20 @@ $('#user-playlists').on('click', '.user-playlist', function(){
 
 //prints playlist to results container
 function printPlaylist(playlistObject){
-    playlistTitleEl.html("");
-    resultsEl.html("");
+    resultsContainerEl.html("");
 
-    // var playlistTitle = $('<div>');
-    // playlistTitle.addClass('playlistTitle');
+    var playlistTitleEl = $('<div>');
     var titleText = $('<h2>').text(playlistObject.name);
+    playlistTitleEl.addClass('playlistTitle');
     playlistTitleEl.append(titleText);
-    // resultsContainerEl.append(playlistTitle);
+    resultsContainerEl.append(playlistTitleEl);
+
+    var resultsEl = $('<div>');
+    resultsEl.addClass('results');
+    resultsContainerEl.append(resultsEl);
 
     for (var i = 0; i < playlistObject.songs.length; i++) {
 
-        // var resultsEl = $('<div>'); 
         var songCard = $('<div>');
         var songImg = $('<img>');
         var songTitle = $('<h3>');
@@ -152,11 +158,7 @@ function printPlaylist(playlistObject){
         songCard.append(deleteBtn);
 
         songCard.addClass('songCard');
-
-        // resultsEl.addClass('results');
         resultsEl.append(songCard);
-
-        // resultsContainerEl.append(resultsEl);
     }
 }
 
@@ -172,7 +174,13 @@ function displayUserPlaylists(){
         userPlaylist.append('<button class=delete-playlist-btn></button>');
         $('#user-playlists').append(userPlaylist);
 
-        $('#playlists-modal').append('<div class=choosingPlaylist><button class=playlist-selected></button>'  + playlists[i].name + "</div>")
+        // $('#playlists-modal').append('<button class=playlist-selected>' + playlists[i].name + '</button>')
+
+        // $('#playlists-modal').append('<div id=choosingPlaylist class=choosingPlaylist></div>')
+
+        // $('#choosingPlaylist').append('<button class=playlist-selected>'  + playlists[i].name + '</button>')
+
+        $('#playlists-modal').append('<div class=choosingPlaylist><button class=playlist-selected>' + playlists[i].name + '</button></div>')
     }
 }
 
