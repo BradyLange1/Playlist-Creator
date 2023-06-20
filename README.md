@@ -10,19 +10,18 @@
 - Brady project manager
 - Brady JS
 - Marjan UI
-- Quincy HTML and everything else as needed
+- Quincy HTML, CSS and JS as needed
 
 ## project title
-music-app
+Minimum Viable Playlist
 
 ## project description
-playlist creation and generation, search based on genre, artist, song, etc
+A simple and sleek playlist creation app
 
 ## user story
-- as a student and a music enthusiast, I want to create playlists that are good to study to, so that I can be calm and productive while working on homework
-- as a music enthusiast, I want to access a wide variety of music, so that I don’t have to go to a bunch of different platforms
+- as a music enthusiast, I want to easily make playlists  
 
-## MVP/ Acceptance Criteria
+## Acceptance Criteria
 ### an app that can fetch music with 2-3 filters and create playlists
 - given a playlist creation site, when I search for music, then I find songs, albums, artists relevant to the input
 - given the music search results, when I look through the results, then I can filter them based on 2-3 different criteria
