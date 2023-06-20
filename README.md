@@ -10,7 +10,7 @@ A simple and sleek playlist creation app
 - Quincy HTML, CSS and JS as needed
 
 ## user story
-- as a music enthusiast, I want to easily make and edit playlists
+- as a music enthusiast, I want to create playlists seamlessly so that I can copy the playlist into my music streaming service of choice
 
 ## Acceptance Criteria
 - given a playlist creation site, when I search for music, then I find songs, albums, artists relevant to the input
