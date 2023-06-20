@@ -1,12 +1,7 @@
-# Playlist-Creator
+# Minimum Viable Playlist
+
 ## project description
-playlist creation and generation, search based on genre, artist, song, etc
-
-## Rules
-- Main branch is protected
-- PRs for everyone
-- 1 reviewer per PR
-
+A simple and sleek playlist creation app
 
 ## project manager & tasks
 - Brady project manager
@@ -14,34 +9,19 @@ playlist creation and generation, search based on genre, artist, song, etc
 - Marjan UI
 - Quincy HTML, CSS and JS as needed
 
-## project title
-Minimum Viable Playlist
-
-## project description
-A simple and sleek playlist creation app
-
 ## user story
-- as a music enthusiast, I want to easily make playlists  
+- as a music enthusiast, I want to easily make and edit playlists
 
 ## Acceptance Criteria
-### an app that can fetch music with 2-3 filters and create playlists
 - given a playlist creation site, when I search for music, then I find songs, albums, artists relevant to the input
-- given the music search results, when I look through the results, then I can filter them based on 2-3 different criteria
 - given the search results, when I select a song, then I can add it to a playlist
 - given a collection of playlists, when I click on a playlist, then I am taken to a page with the complete list
+- given a list of songs in a playlist, when I look at the songs, then I am able to delete any that I do not want in the playlist
+- given search results and playlists, when I look at the songs, then I am able to listen to a clip of the song
 
-
-## Additional Criteria (if there is time)
-- add soundcloud widget for playing songs
-- pinning/favoriting feature for songs/playlists
-- accordion out rest of songs in playlist cards
-- add parental guidance feature
-- additional APIs for more song options
-- find lyrics for songs
-
-
-## wireframe or sketch of design
-![High-fidelity wireframe](./assets/Images/High-fi.jpg)
+## Screenshot of app
+![Screenshot of home page](./assets/Images/MVP%20Screenshot.png)
+![Screenshot of search results](./assets/Images/MVP%20Search%20Screenshot.png)
 
 ## APIs used
 - deezer
