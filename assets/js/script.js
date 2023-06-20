@@ -83,6 +83,7 @@ function printSearch(results){
             audioTag.attr('type', "audio/mpeg")
             audioTag.addClass("audioPreviewSearch") 
             audioTag.append(audioPreview)   
+
             addBtn.addClass('add-song modal-trigger');
             addBtn.attr('data-title', songTitle);
             addBtn.attr('data-artist', artistName);
@@ -187,7 +188,7 @@ function displayUserPlaylists(){
 displayUserPlaylists()
 
 //listens for which song to add to a playlist
-$('#results').on('click', ".add-song", function(){
+$('#results-container').on('click', ".add-song", function(){
     var title = $(this).attr("data-title")
     var artist = $(this).attr("data-artist")
     var cover = $(this).attr("data-albumCover")
@@ -203,8 +204,8 @@ $('#results').on('click', ".add-song", function(){
 })
 
 //listens for which song to delete
-$('#results').on('click', '.delete-song', function(){
-    var selectedPlaylist = $(this).parent().parent().find('h2').text()
+$('#results-container').on('click', '.delete-song', function(){
+    var selectedPlaylist = $(this).parent().parent().parent().find('h2').text()
     var selectedPlaylistIndex = playlists.findIndex((x) => x.name == selectedPlaylist)
     var selectedPlaylistObject = playlists.find((x) => x.name == selectedPlaylist)
     var selectedPlaylistSongs = playlists[selectedPlaylistIndex].songs
